@@ -1,0 +1,2478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Compensation Insurance Fund | Planview Account Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1F3A;
+  --navy-mid: #163354;
+  --accent: #C8973A;
+  --accent-light: #E8B865;
+  --teal: #1A8A7A;
+  --teal-light: #2ABBA7;
+  --red: #C0392B;
+  --slate: #4A5568;
+  --mist: #EDF2F7;
+  --white: #FFFFFF;
+  --border: #CBD5E0;
+  --text: #1A202C;
+  --sub: #718096;
+  --card-bg: #F7FAFC;
+  --tag-bg: #EBF4FF;
+  --tag-text: #2B6CB0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--navy);
+  padding: 12px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(200,151,58,0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-brand {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.topbar-meta {
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1A3A5C 100%);
+  padding: 64px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,58,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero-left {}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,151,58,0.12);
+  border: 1px solid rgba(200,151,58,0.3);
+  color: var(--accent);
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--white);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.hero-title span { color: var(--accent); }
+.hero-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-tag {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 20px 20px;
+}
+.stat-label {
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.stat-value {
+  color: var(--white);
+  font-size: 26px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.stat-sub {
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  margin-top: 3px;
+}
+.stat-card.accent { border-color: rgba(200,151,58,0.3); background: rgba(200,151,58,0.06); }
+.stat-card.accent .stat-value { color: var(--accent-light); }
+
+/* MAIN LAYOUT */
+.main { background: #F0F4F8; }
+
+/* NAV TABS */
+.nav-tabs {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 48px;
+  position: sticky;
+  top: 57px;
+  z-index: 90;
+}
+.nav-tab {
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sub);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.nav-tab:hover { color: var(--navy); }
+.nav-tab.active { color: var(--navy); border-bottom-color: var(--accent); font-weight: 600; }
+
+/* SECTIONS */
+.section { padding: 48px; display: none; }
+.section.active { display: block; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-desc {
+  color: var(--sub);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+/* CARDS */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--navy);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-title .badge {
+  font-size: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.badge-active { background: #E6FFFA; color: #234E52; }
+.badge-risk { background: #FFF5F5; color: #742A2A; }
+.badge-caution { background: #FFFBEB; color: #744210; }
+.badge-won { background: #F0FFF4; color: #1A4731; }
+.badge-lost { background: #FFF5F5; color: #742A2A; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--mist);
+  color: var(--sub);
+  font-size: 11px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #EDF2F7;
+  vertical-align: top;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #F7FAFC; }
+
+/* TAGS */
+.tag {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.tag-teal { background: #E6FFFA; color: #1A4731; }
+.tag-amber { background: #FFFBEB; color: #7B341E; }
+.tag-red { background: #FFF5F5; color: #742A2A; }
+.tag-grey { background: #EDF2F7; color: #4A5568; }
+
+/* MEDDPICC */
+.medd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.medd-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.medd-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.medd-label { font-size: 12px; font-weight: 600; color: var(--slate); margin-bottom: 12px; }
+.medd-score-bar { height: 6px; border-radius: 3px; background: #EDF2F7; margin-bottom: 8px; overflow: hidden; }
+.medd-score-fill { height: 100%; border-radius: 3px; }
+.medd-score-text { font-size: 11px; color: var(--sub); }
+.score-high { background: var(--teal); }
+.score-mid { background: var(--accent); }
+.score-low { background: var(--red); }
+
+/* CONTACT CARDS */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.contact-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.contact-card.champion::before { background: var(--teal); }
+.contact-card.target::before { background: var(--accent); }
+.contact-card.sponsor::before { background: var(--navy); }
+.contact-card.new::before { background: #805AD5; }
+.contact-name { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 2px; }
+.contact-title { font-size: 12px; color: var(--sub); margin-bottom: 10px; }
+.contact-status { font-size: 11px; font-weight: 500; display: inline-block; padding: 3px 8px; border-radius: 20px; margin-bottom: 10px; }
+.status-champion { background: #E6FFFA; color: #1A4731; }
+.status-target { background: #FFFBEB; color: #7B341E; }
+.status-sponsor { background: #EBF4FF; color: #2B4B8C; }
+.status-new { background: #FAF5FF; color: #553C9A; }
+.contact-insight { font-size: 12px; color: var(--slate); line-height: 1.5; }
+.contact-email { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--sub); margin-top: 8px; }
+
+/* OUTREACH */
+.outreach-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.outreach-header {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.outreach-header:hover { background: var(--mist); }
+.outreach-num {
+  width: 28px; height: 28px;
+  background: var(--navy);
+  color: var(--accent);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.outreach-person { font-weight: 600; font-size: 14px; color: var(--navy); margin-left: 12px; }
+.outreach-angle { font-size: 12px; color: var(--sub); margin-left: 12px; }
+.outreach-arrow { font-size: 18px; color: var(--sub); transition: transform 0.2s; }
+.outreach-arrow.open { transform: rotate(180deg); }
+.outreach-body { display: none; padding: 0 24px 24px; }
+.outreach-body.open { display: block; }
+.outreach-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.outreach-tab {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--sub);
+}
+.outreach-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.email-pane, .talk-pane { display: none; }
+.email-pane.active, .talk-pane.active { display: block; }
+.email-subject { font-family: 'IBM Plex Mono', monospace; font-size: 12px; background: var(--mist); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; color: var(--navy); }
+.email-label { font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; font-family: 'IBM Plex Mono', monospace; }
+.email-body { font-size: 13px; line-height: 1.8; color: var(--text); white-space: pre-wrap; background: #FAFBFD; border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+.talk-block { background: #FAFBFD; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 13px; line-height: 1.8; color: var(--text); white-space: pre-wrap; }
+
+/* DEAL HISTORY */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--teal));
+}
+.timeline-item { position: relative; margin-bottom: 28px; }
+.timeline-dot {
+  position: absolute;
+  left: -26px; top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+.dot-won { background: var(--teal); }
+.dot-lost { background: var(--red); }
+.dot-open { background: var(--accent); }
+.dot-future { background: var(--navy); border-color: var(--accent); }
+.timeline-date { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--sub); margin-bottom: 4px; }
+.timeline-name { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 4px; }
+.timeline-detail { font-size: 13px; color: var(--slate); }
+.timeline-amount { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; }
+
+/* VALUE HYPOTHESIS */
+.hyp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 12px 12px 0;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.hyp-card.amber { border-left-color: var(--accent); }
+.hyp-card.navy { border-left-color: var(--navy); }
+.hyp-num { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--border); font-weight: 700; line-height: 1; margin-bottom: 8px; }
+.hyp-title { font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 8px; }
+.hyp-body { font-size: 13px; line-height: 1.7; color: var(--slate); }
+.hyp-tags { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* COMPETITIVE */
+.comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.comp-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.comp-name { font-weight: 700; font-size: 16px; color: var(--navy); margin-bottom: 4px; }
+.comp-desc { font-size: 12px; color: var(--sub); margin-bottom: 16px; }
+.comp-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+.comp-check { color: var(--teal); font-weight: 700; flex-shrink: 0; }
+.comp-x { color: var(--red); font-weight: 700; flex-shrink: 0; }
+.comp-mid { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+/* OVERVIEW INFOBOX */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.info-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.info-box-title { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.kv-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #F0F4F8; font-size: 13px; }
+.kv-row:last-child { border-bottom: none; }
+.kv-label { color: var(--sub); font-size: 12px; }
+.kv-value { font-weight: 500; color: var(--navy); text-align: right; }
+
+/* ALERT BOX */
+.alert {
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.alert-icon { font-size: 20px; flex-shrink: 0; }
+.alert-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.alert-body { font-size: 12px; line-height: 1.6; }
+.alert-green { background: #E6FFFA; border: 1px solid #81E6D9; }
+.alert-green .alert-title { color: #1D4731; }
+.alert-amber { background: #FFFBEB; border: 1px solid #F6E05E; }
+.alert-amber .alert-title { color: #744210; }
+.alert-red { background: #FFF5F5; border: 1px solid #FEB2B2; }
+.alert-red .alert-title { color: #742A2A; }
+
+/* SECTION SPECIFIC */
+.pv-mission {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  color: var(--white);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.pv-mission span { color: var(--accent); font-style: normal; font-weight: 600; }
+
+/* LIVE FEED */
+.feed-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+.feed-source { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.feed-title { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 8px; }
+.feed-body { font-size: 13px; color: var(--slate); line-height: 1.6; margin-bottom: 10px; }
+.feed-trigger { font-size: 12px; color: var(--teal); font-weight: 500; }
+
+/* ── CONNECT 2026 TAB — fully scoped ── */
+#section-connect2026 {
+  padding: 0; margin: 0;
+  --c-red: #C8102E; --c-red-dark: #9E0B24; --c-red-pale: #fdf2f4;
+  --c-black: #0D0D0D; --c-gray-dark: #222; --c-gray-mid: #555;
+  --c-gray-light: #999; --c-gray-bg: #F7F7F5; --c-white: #FFFFFF;
+  --c-border: #E8E4E0; --c-sunday: #2C5F8A; --c-monday: #1A5C3A; --c-tuesday: #5C3A1A;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--c-gray-bg);
+  color: var(--c-black);
+  font-size: 14px;
+  line-height: 1.6;
+}
+#section-connect2026 * { box-sizing: border-box; }
+#section-connect2026 .c26-cover {
+  background: var(--c-black); min-height: 280px; position: relative;
+  overflow: hidden; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 48px 56px 44px;
+}
+#section-connect2026 .c26-cover-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(200,16,46,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(200,16,46,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+#section-connect2026 .c26-cover-glow {
+  position: absolute; top: -80px; right: -80px; width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(200,16,46,0.18) 0%, transparent 70%);
+}
+#section-connect2026 .c26-cover-eyebrow {
+  position: relative; z-index: 2;
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--c-red); margin-bottom: 14px;
+}
+#section-connect2026 .c26-cover-title {
+  position: relative; z-index: 2;
+  font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300;
+  color: var(--c-white); line-height: 1.05; letter-spacing: -1px; margin-bottom: 20px;
+}
+#section-connect2026 .c26-cover-title em { font-style: italic; color: rgba(255,255,255,0.5); }
+#section-connect2026 .c26-cover-meta {
+  position: relative; z-index: 2;
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+}
+#section-connect2026 .c26-cover-pill {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7); font-size: 12px; padding: 5px 14px; border-radius: 100px;
+  font-family: 'DM Mono', monospace; letter-spacing: 1px;
+}
+#section-connect2026 .c26-cover-pill.red {
+  background: rgba(200,16,46,0.2); border-color: rgba(200,16,46,0.4); color: #ff8097;
+}
+#section-connect2026 .c26-intro {
+  background: var(--c-white); border-bottom: 1px solid var(--c-border);
+  padding: 32px 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+}
+#section-connect2026 .c26-intro-text { font-size: 15px; color: var(--c-gray-mid); line-height: 1.75; }
+#section-connect2026 .c26-intro-text strong { color: var(--c-black); }
+#section-connect2026 .c26-intro-legend { display: flex; flex-direction: column; gap: 10px; }
+#section-connect2026 .c26-legend-item { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--c-gray-mid); }
+#section-connect2026 .c26-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+#section-connect2026 .c26-body { max-width: 960px; margin: 0 auto; padding: 40px 32px 64px; }
+#section-connect2026 .c26-day-block { margin-bottom: 40px; }
+#section-connect2026 .c26-day-label { display: flex; align-items: center; margin-bottom: 20px; position: relative; }
+#section-connect2026 .c26-day-number {
+  font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300;
+  line-height: 1; color: var(--c-border); margin-right: 16px; user-select: none;
+}
+#section-connect2026 .c26-day-info { flex: 1; }
+#section-connect2026 .c26-day-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;
+  color: var(--c-black); line-height: 1.1;
+}
+#section-connect2026 .c26-day-date {
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px;
+  color: var(--c-gray-light); text-transform: uppercase; margin-top: 2px;
+}
+#section-connect2026 .c26-day-theme {
+  font-size: 12px; color: var(--c-white); padding: 4px 14px; border-radius: 4px;
+  font-weight: 500; letter-spacing: 0.5px; align-self: flex-start; margin-top: 8px;
+}
+#section-connect2026 .c26-theme-sunday { background: var(--c-sunday); }
+#section-connect2026 .c26-theme-monday { background: var(--c-monday); }
+#section-connect2026 .c26-theme-tuesday { background: var(--c-tuesday); }
+#section-connect2026 .c26-day-rule { flex: 1; height: 1px; background: var(--c-border); margin-left: 16px; }
+#section-connect2026 .c26-session-card {
+  background: var(--c-white); border: 1px solid var(--c-border); border-radius: 12px;
+  margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.2s;
+  display: grid; grid-template-columns: 100px 1fr;
+}
+#section-connect2026 .c26-session-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+#section-connect2026 .c26-session-card.priority {
+  border-color: rgba(200,16,46,0.25); box-shadow: 0 0 0 1px rgba(200,16,46,0.08);
+}
+#section-connect2026 .c26-session-time-col {
+  background: var(--c-gray-bg); border-right: 1px solid var(--c-border);
+  padding: 20px 14px; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start; gap: 10px; text-align: center;
+}
+#section-connect2026 .c26-session-time {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--c-gray-light); letter-spacing: 0.5px; line-height: 1.4;
+}
+#section-connect2026 .c26-priority-star { font-size: 16px; color: var(--c-red); }
+#section-connect2026 .c26-track-pip { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; }
+#section-connect2026 .c26-session-body { padding: 18px 22px; }
+#section-connect2026 .c26-session-track {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--c-gray-light); margin-bottom: 6px;
+}
+#section-connect2026 .c26-session-title { font-size: 15px; font-weight: 600; color: var(--c-black); line-height: 1.3; margin-bottom: 4px; }
+#section-connect2026 .c26-session-speaker { font-size: 12px; color: var(--c-gray-light); margin-bottom: 10px; font-style: italic; }
+#section-connect2026 .c26-session-why {
+  font-size: 13px; color: var(--c-gray-mid); line-height: 1.6;
+  padding-top: 10px; border-top: 1px solid var(--c-border);
+}
+#section-connect2026 .c26-session-why strong { color: var(--c-black); }
+#section-connect2026 .c26-session-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+#section-connect2026 .c26-tag {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
+  padding: 2px 9px; border-radius: 100px; border: 1px solid var(--c-border);
+  color: var(--c-gray-light); text-transform: uppercase;
+}
+#section-connect2026 .c26-tag.red { border-color: rgba(200,16,46,0.3); color: var(--c-red); background: var(--c-red-pale); }
+#section-connect2026 .c26-split-note {
+  background: var(--c-black); color: var(--c-white); border-radius: 10px;
+  padding: 20px 24px; margin: 16px 0 20px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+#section-connect2026 .c26-split-note.two-col { grid-template-columns: 1fr 1fr; }
+#section-connect2026 .c26-split-person { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+#section-connect2026 .c26-split-person strong {
+  display: block; font-size: 10px; font-family: 'DM Mono', monospace;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px;
+}
+#section-connect2026 .c26-split-person span { color: var(--c-white); font-weight: 500; }
+#section-connect2026 .c26-exec-note {
+  background: linear-gradient(135deg, #1a3a5c, #0d2438); color: var(--c-white);
+  border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border-left: 4px solid #4a9fd4;
+}
+#section-connect2026 .c26-exec-note-label {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: #4a9fd4; margin-bottom: 8px;
+}
+#section-connect2026 .c26-exec-note-title { font-size: 14px; font-weight: 600; color: var(--c-white); margin-bottom: 6px; }
+#section-connect2026 .c26-exec-note-body { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+#section-connect2026 .c26-exec-note-body strong { color: var(--c-white); }
+#section-connect2026 .c26-subheading {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--c-gray-light); margin: 24px 0 12px;
+}
+#section-connect2026 .c26-roadmap-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 12px; }
+#section-connect2026 .c26-roadmap-card {
+  background: var(--c-white); border: 1px solid var(--c-border); border-radius: 10px;
+  padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px;
+}
+#section-connect2026 .c26-roadmap-card.must { border-color: rgba(200,16,46,0.3); background: var(--c-red-pale); }
+#section-connect2026 .c26-roadmap-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+#section-connect2026 .c26-roadmap-info { flex: 1; }
+#section-connect2026 .c26-roadmap-title { font-size: 14px; font-weight: 600; color: var(--c-black); margin-bottom: 2px; }
+#section-connect2026 .c26-roadmap-speaker { font-size: 12px; color: var(--c-gray-light); margin-bottom: 6px; }
+#section-connect2026 .c26-roadmap-note { font-size: 12px; color: var(--c-gray-mid); margin-bottom: 6px; }
+#section-connect2026 .c26-roadmap-badge {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 1.5px;
+  padding: 2px 8px; border-radius: 4px; text-transform: uppercase; font-weight: 500;
+}
+#section-connect2026 .c26-badge-must { background: var(--c-red); color: white; }
+#section-connect2026 .c26-badge-rec { background: #E8E4E0; color: var(--c-gray-mid); }
+#section-connect2026 .c26-alt-note {
+  background: #f0f4f8; border: 1px dashed #c5d1db; border-radius: 10px;
+  padding: 14px 20px; margin: -4px 0 12px; font-size: 13px; color: var(--c-gray-mid);
+}
+#section-connect2026 .c26-alt-note strong { color: var(--c-black); }
+#section-connect2026 .c26-alt-label {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: #7a9ab5; display: block; margin-bottom: 4px;
+}
+#section-connect2026 .c26-alert-banner {
+  background: var(--c-red-pale); border-left: 4px solid var(--c-red);
+  padding: 14px 20px; border-radius: 0 8px 8px 0; margin-bottom: 20px;
+  font-size: 13px; color: var(--c-gray-dark); line-height: 1.6;
+}
+#section-connect2026 .c26-alert-banner strong { color: var(--c-red); }
+#section-connect2026 .c26-evening-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+#section-connect2026 .c26-evening-card {
+  background: var(--c-white); border: 1px solid var(--c-border); border-radius: 10px; padding: 16px 18px;
+}
+#section-connect2026 .c26-evening-time {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px;
+  color: var(--c-gray-light); text-transform: uppercase; margin-bottom: 6px;
+}
+#section-connect2026 .c26-evening-title { font-size: 14px; font-weight: 600; color: var(--c-black); margin-bottom: 4px; }
+#section-connect2026 .c26-evening-desc { font-size: 12px; color: var(--c-gray-mid); line-height: 1.5; }
+#section-connect2026 .c26-people-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+#section-connect2026 .c26-person-card {
+  background: var(--c-white); border: 1px solid var(--c-border); border-radius: 10px; padding: 16px 18px;
+}
+#section-connect2026 .c26-person-card.priority-person { border-color: rgba(200,16,46,0.3); background: var(--c-red-pale); }
+#section-connect2026 .c26-person-name { font-size: 14px; font-weight: 600; color: var(--c-black); margin-bottom: 2px; }
+#section-connect2026 .c26-person-title { font-size: 11px; color: var(--c-gray-light); font-style: italic; margin-bottom: 8px; }
+#section-connect2026 .c26-person-why { font-size: 12px; color: var(--c-gray-mid); line-height: 1.5; }
+#section-connect2026 .c26-person-why strong { color: var(--c-black); }
+#section-connect2026 .c26-footer {
+  background: var(--c-black); color: rgba(255,255,255,0.35); text-align: center; padding: 24px;
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+}
+#section-connect2026 .c26-footer span { color: var(--c-red); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .medd-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .info-grid { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+  .comp-grid { grid-template-columns: 1fr; }
+  .section { padding: 24px; }
+  .hero { padding: 40px 24px 32px; }
+  .nav-tabs { padding: 0 24px; }
+  .topbar { padding: 12px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-brand">Planview</div>
+  <div class="topbar-meta">AE: Larry Bonham &nbsp;·&nbsp; Account No. A-000555991 &nbsp;·&nbsp; Updated Apr 28, 2026</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="dot"></span>Expansion Opportunity &nbsp;·&nbsp; Active Customer</div>
+      <h1 class="hero-title">State Compensation<br>Insurance <span>Fund</span></h1>
+      <div class="hero-sub">SCIF &nbsp;·&nbsp; Sacramento, CA &nbsp;·&nbsp; Public Sector Insurance &nbsp;·&nbsp; ~4,300 employees</div>
+      <div class="hero-tags">
+        <span class="hero-tag">Current ARR: $200,449</span>
+        <span class="hero-tag">Customer Since 2009</span>
+        <span class="hero-tag">E1 + Portfolios Active</span>
+        <span class="hero-tag">Renewal 2027-04-30</span>
+        <span class="hero-tag">P1 Priority Account</span>
+        <span class="hero-tag">Demandbase: 83/100</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card accent">
+      <div class="stat-label">Current ARR</div>
+      <div class="stat-value">$200K</div>
+      <div class="stat-sub">Active · E1 + Portfolios</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Lifetime Value</div>
+      <div class="stat-value">$400K</div>
+      <div class="stat-sub">Since First Win 2009</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Next Renewal</div>
+      <div class="stat-value">Apr 2027</div>
+      <div class="stat-sub">$200K ARR at stake</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Expansion Target</div>
+      <div class="stat-value">SPM+</div>
+      <div class="stat-sub">ePMO · Anvi · LeanKit scale</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showSection('overview', this)">🏠 Overview</div>
+  <div class="nav-tab" onclick="showSection('initiatives', this)">🎯 Strategic Initiatives</div>
+  <div class="nav-tab" onclick="showSection('contacts', this)">👥 Contacts & Org</div>
+  <div class="nav-tab" onclick="showSection('meddpicc', this)">📊 MEDDPICC</div>
+  <div class="nav-tab" onclick="showSection('hypothesis', this)">💡 Value Hypothesis</div>
+  <div class="nav-tab" onclick="showSection('competitive', this)">⚔️ Competitive</div>
+  <div class="nav-tab" onclick="showSection('outreach', this)">📧 Outreach Playbook</div>
+  <div class="nav-tab" onclick="showSection('history', this)">📅 Deal History</div>
+  <div class="nav-tab" onclick="showSection('livefeed', this)">📡 Live Feed</div>
+  <div class="nav-tab" onclick="showSection('connect2026', this)">🎪 Connect 2026</div>
+</div>
+
+<div class="main">
+
+<!-- OVERVIEW -->
+<div id="section-overview" class="section active">
+  <div class="pv-mission">
+    <span>Planview Mission at State Fund:</span> "Our mission is your mission. Planview is helping the State Compensation Insurance Fund of California deliver fair, efficient, and innovative workers' compensation services to 130,000 California employers and their injured workers."
+  </div>
+
+  <div class="alert alert-amber">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <div class="alert-title">Expansion Risk: Closed-Lost Anvi + PP Users ($152K) — December 2025</div>
+      <div class="alert-body">Alvin Cheung (SVP) declined to sign 2025 Q4 additional licenses for ProjectPlace expansion and Unlimited Anvi. Stated "enough PP licenses today." Satt Bains signed off but Alvin blocked. Anvi unlimited pricing no longer available. Re-engage Q2 2026 with renewed executive framing and updated Anvi value story.</div>
+    </div>
+  </div>
+
+  <div class="alert alert-green">
+    <div class="alert-icon">✅</div>
+    <div>
+      <div class="alert-title">Renewal Won — April 2026 ($200,449 ARR secured)</div>
+      <div class="alert-body">Full ARR renewal closed Q1 2026. Guardian Status: Saved Full ARR. Satt Bains (VP PMO) confirmed as executive sponsor. Randi Shepard (Sr. PM) active platform admin and last active April 27, 2026. Kathleen Radic (Director PMO) recently visited website 5+ times in one day — high buying signal.</div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <div class="info-box-title">Company Profile</div>
+      <div class="kv-row"><span class="kv-label">Full Name</span><span class="kv-value">State Compensation Insurance Fund</span></div>
+      <div class="kv-row"><span class="kv-label">HQ</span><span class="kv-value">2860 Gateway Oaks Dr, Sacramento, CA</span></div>
+      <div class="kv-row"><span class="kv-label">Employees</span><span class="kv-value">~4,300</span></div>
+      <div class="kv-row"><span class="kv-label">Annual Premium</span><span class="kv-value">~$1 Billion+</span></div>
+      <div class="kv-row"><span class="kv-label">Net Admitted Assets</span><span class="kv-value">~$20 Billion</span></div>
+      <div class="kv-row"><span class="kv-label">Policyholders</span><span class="kv-value">~130,000 CA employers</span></div>
+      <div class="kv-row"><span class="kv-label">Industry</span><span class="kv-value">Workers' Compensation Insurance</span></div>
+      <div class="kv-row"><span class="kv-label">Type</span><span class="kv-value">Not-for-profit, Quasi-public</span></div>
+      <div class="kv-row"><span class="kv-label">Website</span><span class="kv-value">statefundca.com</span></div>
+    </div>
+    <div class="info-box">
+      <div class="info-box-title">Planview Relationship</div>
+      <div class="kv-row"><span class="kv-label">Account Number</span><span class="kv-value">A-000555991</span></div>
+      <div class="kv-row"><span class="kv-label">Customer Since</span><span class="kv-value">January 6, 2009</span></div>
+      <div class="kv-row"><span class="kv-label">Current ARR</span><span class="kv-value">$200,449</span></div>
+      <div class="kv-row"><span class="kv-label">Lifetime Value</span><span class="kv-value">$400,899</span></div>
+      <div class="kv-row"><span class="kv-label">CS Classification</span><span class="kv-value">Enterprise Lite</span></div>
+      <div class="kv-row"><span class="kv-label">Active Products</span><span class="kv-value">E1 (2,765 seats) · Portfolios (2) · PP (264) · LK (264)</span></div>
+      <div class="kv-row"><span class="kv-label">MSA</span><span class="kv-value">Subscription Services Agreement (Mar 2025)</span></div>
+      <div class="kv-row"><span class="kv-label">Payment Terms</span><span class="kv-value">NET 30 · Annual Billing</span></div>
+      <div class="kv-row"><span class="kv-label">PO Required</span><span class="kv-value">No</span></div>
+      <div class="kv-row"><span class="kv-label">Account Priority</span><span class="kv-value">P1</span></div>
+      <div class="kv-row"><span class="kv-label">Guardian Status</span><span class="kv-value">Saved Full ARR ✅</span></div>
+      <div class="kv-row"><span class="kv-label">Billing Contact</span><span class="kv-value">rshepard@scif.com</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Account Team</div>
+    <table class="data-table">
+      <tr><th>Role</th><th>Name</th><th>Contact</th></tr>
+      <tr><td>Account Executive</td><td><strong>Larry Bonham</strong></td><td>lbonham@planview.com · (650) 906-9524</td></tr>
+      <tr><td>CSM (LeanKit)</td><td>Assigned CSM</td><td>SF: 0051M00000AP5uLQAT</td></tr>
+      <tr><td>RSM</td><td>Assigned RSM</td><td>SF: 0058Y00000BJiD6QAL</td></tr>
+      <tr><td>Billing Contact at SCIF</td><td>Randi Shepard</td><td>rshepard@scif.com</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Expansion Opportunity Summary</div>
+    <p style="font-size:14px;line-height:1.8;color:var(--slate);">SCIF is a long-tenured Planview customer (customer since 2009) currently using EnterpriseOne and Portfolios at the ePMO level with 2,765 E1 seats and 264 Projectplace/LeanKit licenses. The significant untapped opportunity is expanding Planview's footprint across three vectors: (1) <strong>Anvi AI enablement</strong> — SCIF attempted to activate Anvi in late 2025 but was blocked by IT security whitelisting and a budget hold from Alvin Cheung. The door is open to re-engage with a revised AI value story tied to SCIF's Operations Redesign and cost reduction mandate. (2) <strong>ProjectPlace seat expansion</strong> — SCIF has acknowledged demand for up to 2,500 PP licenses across business units; the Microsoft Teams alternative remains their competitive consideration. (3) <strong>SPM and portfolio governance maturity</strong> — SCIF's ePMO currently manages strategic IT and transformation programs through Portfolios at minimal depth (2 licensed seats). A richer SPM deployment connecting intake, prioritization, and portfolio-level resource visibility to Alvin Cheung and Alicia Wong's governance mandate is the highest-value expansion motion.</p>
+  </div>
+</div>
+
+<!-- STRATEGIC INITIATIVES -->
+<div id="section-initiatives" class="section">
+  <div class="section-title">Strategic Initiatives</div>
+  <div class="section-desc">Named initiatives from SCIF's Board governance documents, public filings, and research. Each mapped to a Planview opportunity.</div>
+
+  <div class="card">
+    <div class="card-title">1. Operations Redesign Initiative <span class="badge badge-active">Active / Multi-Year</span></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;">SCIF has executed a major operations redesign that achieved $300M in annual fixed expense reductions. This initiative involved streamlining processes, adopting automation, and accelerating claims processing. The redesign continues as an ongoing program with technology as a central driver. SCIF's public statements emphasize that this is not a one-time cost cut but a structural transformation of how the organization operates.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;"><strong>Planview Alignment:</strong> A $300M cost reduction program of this scale requires portfolio governance to track which operational programs delivered results and which should be reinvested or retired. Without SPM, the answer is narrative-based. Planview Portfolios connects program execution to measurable operational outcomes.</p>
+    <div><span class="tag tag-teal">Portfolios (SPM)</span><span class="tag">Anvi AI</span><span class="tag tag-teal">Portfolio ROI Tracking</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">2. Technology Modernization and Automation Program <span class="badge badge-active">Active</span></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;">As part of the Operations Redesign, SCIF is investing in advanced technology and automation to improve claims processing speed and policyholder service quality. This includes portal modernization, process automation in claims handling, and IT infrastructure investment. Job postings and LinkedIn activity at SCIF indicate active hiring in IT delivery, data analytics, and enterprise systems roles.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;"><strong>Planview Alignment:</strong> The technology modernization portfolio competes with business transformation programs for the same IT and PMO resources. Planview E1 already provides execution governance. The gap is connecting IT delivery to strategic prioritization decisions at Alvin Cheung's level — which technology programs get funded first and why.</p>
+    <div><span class="tag">E1 (existing)</span><span class="tag tag-teal">Strategic Planning</span><span class="tag">Resource Capacity Modeling</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">3. Cybersecurity and Data Governance Maturity Program <span class="badge badge-caution">Board Priority</span></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;">SCIF's Board Governance Committee documents (March 2026) reference compliance with SB 446 (30-day data breach notification law signed Q4 2025), 2025 Own Risk and Solvency Assessment (ORSA), and ongoing Privacy Office program updates. CISO Ajay Wadhwa has been leading SCIF's information security program since 2017, responsible for strategic security direction and board risk posture. SCIF requires rigorous security review for all vendors — Planview cleared SCIF Infosec in April 2025 after an extended review process.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;"><strong>Planview Alignment:</strong> Security program initiatives require portfolio-level tracking to demonstrate ORSA compliance and board governance maturity. Planview's portfolio layer provides the audit-ready program visibility SCIF's governance mandate requires.</p>
+    <div><span class="tag tag-amber">Board Governance</span><span class="tag">ORSA Compliance</span><span class="tag">Risk Program Portfolio</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4. Claims Innovation and Injured Worker Experience Program <span class="badge badge-active">Ongoing</span></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;">SCIF's stated mission is workplace safety innovation and injured worker care. The organization is investing in medical treatment improvements, digital channels for claim filing and management, and faster payment processing. "Innovating in areas such as workplace safety and injured worker care" is cited explicitly in SCIF's LinkedIn profile and public-facing materials as a core strategic commitment for the next 100 years.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--slate);margin-bottom:12px;"><strong>Planview Alignment:</strong> Innovation programs competing with operational priorities for the same PMO resources create the classic "all initiatives are critical" dynamic. Planview's intake and prioritization framework gives Kathleen Radic and Alicia Wong the tools to defend sequencing decisions at the board level.</div>
+    <div><span class="tag tag-teal">Intake Management</span><span class="tag">Portfolio Prioritization</span><span class="tag">Collaborative Work</span></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Business Risks Connected to Planview Urgency</div>
+    <table class="data-table">
+      <tr><th>Risk</th><th>Severity</th><th>Planview Connection</th></tr>
+      <tr><td><strong>California regulatory compliance pressure (SB 446, ORSA)</strong></td><td><span class="tag tag-red">High</span></td><td>Audit-ready portfolio governance supports defensible compliance program management</td></tr>
+      <tr><td><strong>Tool sprawl (SharePoint, MS Project, Confluence, JIRA, Excel, PowerPoint)</strong></td><td><span class="tag tag-red">High</span></td><td>Fragmented tooling creates reporting gaps and manual effort — confirmed at initial RFP qualification</td></tr>
+      <tr><td><strong>Anvi blocked by IT security whitelisting (2025)</strong></td><td><span class="tag tag-amber">Medium</span></td><td>Re-engage with updated AI data security docs. Infosec cleared Portfolios; Anvi path is established</td></tr>
+      <tr><td><strong>Executive budget hold by Alvin Cheung on expansion</strong></td><td><span class="tag tag-amber">Medium</span></td><td>Build business case through Satt Bains and Kathleen Radic to reframe value for Alvin's approval</td></tr>
+      <tr><td><strong>Microsoft Teams / M365 competitive pressure on PP seats</strong></td><td><span class="tag tag-amber">Medium</span></td><td>Differentiate on portfolio visibility and cross-program governance — not collaboration features alone</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- CONTACTS -->
+<div id="section-contacts" class="section">
+  <div class="section-title">Contacts & Org Map</div>
+  <div class="section-desc">Key stakeholders sourced from Salesforce CRM, RFP history, and public sources. Click any contact card to view engagement notes.</div>
+
+  <div class="contact-grid">
+    <div class="contact-card sponsor">
+      <div class="contact-name">Alvin Cheung</div>
+      <div class="contact-title">SVP, Enterprise Project Services (ePMO)</div>
+      <div class="contact-status status-sponsor">Economic Buyer</div>
+      <div class="contact-insight">Finance executive with 25+ years experience. Attended 9/26 demo in the original RFP process. Signed the original contract (SOW routed through Alvin). Blocked the Dec 2025 PP + Anvi expansion citing "enough licenses today." Key to re-engage with a CFO-level ROI story, not a licensing pitch. High-maturity buyer who responds to business value data, not feature narratives.</div>
+      <div class="contact-email">LinkedIn: linkedin.com/in/alvin-cheung-6044357</div>
+    </div>
+    <div class="contact-card sponsor">
+      <div class="contact-name">Alicia Wong</div>
+      <div class="contact-title">SVP, Enterprise Project Services (ePMO)</div>
+      <div class="contact-status status-sponsor">Exec Sponsor</div>
+      <div class="contact-insight">Attended 9/26 demo as SVP ePMO. Key executive stakeholder in the original RFP selection and vendor down-select. Most likely the executive sponsor for portfolio governance decisions. ZoomInfo confirms title as SVP Enterprise Project Services. High-value target to re-engage around portfolio maturity and governance credibility.</div>
+      <div class="contact-email">LinkedIn: linkedin.com/in/alicia-wong-90a367b2</div>
+    </div>
+    <div class="contact-card champion">
+      <div class="contact-name">Satt Bains</div>
+      <div class="contact-title">VP, PMO</div>
+      <div class="contact-status status-champion">Champion / Decision Influencer</div>
+      <div class="contact-insight">Primary Planview executive relationship. Attended 9/26 demo and participated throughout the 18-month sales cycle. Signed off on Q4 2025 expansion but was overruled by Alvin Cheung. Last activity: April 16, 2026. Registered for Planview Connect 2026 (May event). Strong champion — owns the Planview relationship internally. Phone: 707-685-1376 · sbains@scif.com</div>
+      <div class="contact-email">sbains@scif.com · 707-685-1376</div>
+    </div>
+    <div class="contact-card target">
+      <div class="contact-name">Kathleen Radic</div>
+      <div class="contact-title">Director, Project Management Office</div>
+      <div class="contact-status status-target">High-Intent Target</div>
+      <div class="contact-insight">Director-level PMO leader. Last activity April 8, 2026. Recent signal: visited Planview website 5+ times in a single day — the strongest intent signal in the account. Represents the day-to-day PMO governance buyer persona. Likely exploring expanded PPM or SPM capabilities. First-touch outreach priority this week.</div>
+      <div class="contact-email">kcradic@scif.com · 707-400-3862</div>
+    </div>
+    <div class="contact-card champion">
+      <div class="contact-name">Randi Shepard</div>
+      <div class="contact-title">Senior Project Manager</div>
+      <div class="contact-status status-champion">Platform Admin / Champion</div>
+      <div class="contact-insight">Primary platform administrator and billing contact. PP account owner, ES Head Admin, ES Member. Last login April 28, 2026 (today). Active across Strategic Planning, Portfolio Resource Mgmt, and Collaborative Work solution interests. 6 marketing campaign touches. Last interesting moment: April 2 — received Gainsight "New project created" prompt. Most active SCIF user in the system.</div>
+      <div class="contact-email">rshepard@scif.com · 707-305-3474</div>
+    </div>
+    <div class="contact-card new">
+      <div class="contact-name">Ajay Wadhwa</div>
+      <div class="contact-title">Chief Information Security Officer</div>
+      <div class="contact-status status-new">CISO — New Target</div>
+      <div class="contact-insight">CISO since 2017. Leads SCIF's security program, works directly with executive leadership and the board on security initiatives and risk posture. 30+ years across IT, audit, compliance, cybersecurity. Relevant because Planview's AI and data security clearance was a major friction point in the 2024-2025 sales cycle. CISO relationship could accelerate Anvi activation and future expansion security reviews.</div>
+      <div class="contact-email">Source: Security Boulevard, April 9, 2026</div>
+    </div>
+    <div class="contact-card new">
+      <div class="contact-name">Jennifer Patten</div>
+      <div class="contact-title">Senior Project Manager</div>
+      <div class="contact-status status-new">Original RFP Champion</div>
+      <div class="contact-insight">Named in the original SDR qualification notes as "newest project manager on the PMO team — tasked to look for a tool." Was the internal champion who initiated the 2023 RFP. Still a valuable internal voice for PMO expansion discussions. Attended 9/26 demo.</div>
+      <div class="contact-email">Source: Salesforce SDR Qualification Notes (2023)</div>
+    </div>
+    <div class="contact-card target">
+      <div class="contact-name">Alexandra Crouse</div>
+      <div class="contact-title">RFP Administrator</div>
+      <div class="contact-status status-target">Procurement Contact</div>
+      <div class="contact-insight">Led the 2024 RFP administrative process via SAP Ariba. Key procurement process contact. Confirmed budget still in place during July 2024 RFP re-opening. Important commercial path contact for future expansion amendments and procurement navigation.</div>
+      <div class="contact-email">Source: Salesforce opportunity notes (2024)</div>
+    </div>
+    <div class="contact-card new">
+      <div class="contact-name">Mona Sekla</div>
+      <div class="contact-title">Director, Business Analysis</div>
+      <div class="contact-status status-new">Business Analyst Function Lead</div>
+      <div class="contact-insight">Named in SDR qualification notes as "director over business analyst." Business analyst function is a core Projectplace and LeanKit user persona. Expansion of BA-level collaboration and work management is a natural upsell vector from the current 264-seat PP deployment. Not yet engaged in CRM post-original deal.</div>
+      <div class="contact-email">Source: Salesforce SDR Qualification Notes (2023)</div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDDPICC -->
+<div id="section-meddpicc" class="section">
+  <div class="section-title">MEDDPICC Analysis</div>
+  <div class="section-desc">Scored for the SPM expansion, Anvi AI activation, and ProjectPlace seat growth motions. Overall score reflects early-to-mid stage across all three vectors.</div>
+
+  <div class="card" style="margin-bottom:24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div class="card-title" style="margin-bottom:0;">Overall Score</div>
+      <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--accent);">44 / 80</div>
+    </div>
+    <div style="background:var(--mist);border-radius:8px;height:10px;overflow:hidden;margin-bottom:12px;">
+      <div style="width:55%;height:100%;background:linear-gradient(90deg,var(--teal),var(--accent));border-radius:8px;"></div>
+    </div>
+    <p style="font-size:13px;color:var(--slate);line-height:1.7;">Existing customer with a strong multi-year relationship and active platform usage. Renewal just closed ($200K ARR secured). Key gaps: executive buyer re-engagement (Alvin Cheung blocked last expansion), Anvi IT security re-clearance, and formal SPM expansion decision process. Satt Bains is a reliable champion. Kathleen Radic showing high intent signals. Close path exists through direct commercial amendment — no Ariba RFP required for expansion.</p>
+  </div>
+
+  <div class="medd-grid">
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--teal);">M</div>
+      <div class="medd-label">Metrics</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-high" style="width:70%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">7/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">$300M cost reduction program confirms scale of operational investment. 2,765 E1 seats and 264 PP seats demonstrate active adoption. Operations Redesign initiative creates measurable outcomes baseline for SPM ROI case. ORSA compliance program adds governance urgency.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--accent);">E</div>
+      <div class="medd-label">Economic Buyer</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-mid" style="width:40%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">4/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Alvin Cheung (SVP) is confirmed economic buyer — signed original contract. Blocked Dec 2025 expansion citing "enough licenses." No direct re-engagement since. Critical gap to close: need to reframe expansion value to CFO-level ROI, not seat count. Satt Bains must carry the business case to Alvin before outreach.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--teal);">D</div>
+      <div class="medd-label">Decision Criteria</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-high" style="width:65%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">6.5/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Original RFP criteria well-documented: integration, portfolio visibility, executive dashboards, multi-location access, budget tracking. Planview won on these criteria. Expansion criteria need to be reestablished around SPM governance maturity and Anvi AI value. No competitive RFP in play for expansion.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--accent);">D</div>
+      <div class="medd-label">Decision Process</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-mid" style="width:45%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">4.5/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Expansion path is a direct commercial amendment — no PO required, no Ariba RFP. MSA in place since March 2025. Alvin Cheung must approve. Internal budget approval meeting required (per 2025 pattern: executive approval meeting then DocuSign routing). Procurement contact Alexandra Crouse navigates the amendment. Timeline: 60-90 days if champion builds case now.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--teal);">I</div>
+      <div class="medd-label">Identify Pain</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-high" style="width:75%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">7.5/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Pain deeply confirmed from 2023 RFP: tool sprawl (SharePoint, MS Project, Confluence, JIRA, Excel), inability to share exec dashboards, multi-location access gaps, manual reporting. Current state: 264 PP seats serving a team whose demand was cited at 2,500 users. Anvi blocked by security — known frustration. Kathleen Radic's website visits signal active pain discovery.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--teal);">C</div>
+      <div class="medd-label">Champion</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-high" style="width:70%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">7/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Satt Bains (VP PMO) is a reliable, proven champion — registered for Planview Connect 2026. Randi Shepard is the operational champion and platform owner. Kathleen Radic is the emerging expansion champion based on recent activity. Gap: need Kathleen to become an active internal sponsor for SPM expansion before Alvin Cheung meeting.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--accent);">C</div>
+      <div class="medd-label">Competition</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-mid" style="width:60%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">6/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">Competitive intent keyword detected: <strong>Asana</strong>. Microsoft Teams / M365 is the stated alternative for PP collaboration (free as part of enterprise license). ServiceNow was the final competitor beaten in the 2023-2025 RFP cycle. No RFP in play for expansion — direct amendment path is clean. Asana signal suggests someone at SCIF is evaluating lightweight PMO alternatives.</div>
+    </div>
+    <div class="medd-card">
+      <div class="medd-letter" style="color:var(--teal);">P</div>
+      <div class="medd-label">Paper Process</div>
+      <div class="medd-score-bar"><div class="medd-score-fill score-high" style="width:80%;"></div></div>
+      <div class="medd-score-text" style="margin-bottom:12px;">8/10</div>
+      <div style="font-size:12px;color:var(--slate);line-height:1.6;">MSA fully executed March 2025. No PO required. Annual billing, NET 30. Expansion = direct commercial amendment. Alvin Cheung signs. DocuSign routing confirmed from prior deal pattern. No Ariba portal or public RFP required. Fastest commercial path of any deal motion — paper process is the strongest MEDDPICC element.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE HYPOTHESIS -->
+<div id="section-hypothesis" class="section">
+  <div class="section-title">Value Hypothesis</div>
+  <div class="section-desc">Tailored to SCIF's Operations Redesign, portfolio governance maturity, and the specific expansion vectors — Anvi AI, PP seat growth, and SPM depth.</div>
+
+  <div class="card" style="border-left: 4px solid var(--navy); border-radius: 0 12px 12px 0; background: var(--navy); color: var(--white);">
+    <div style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;">Core Hypothesis</div>
+    <div style="font-size:16px;line-height:1.8;color:var(--white);">SCIF cannot demonstrate the full return on its $300M Operations Redesign investment unless its ePMO has a unified, value-grounded portfolio governance layer that connects program execution to measurable outcomes. Planview already provides the execution infrastructure. What Alvin Cheung and Alicia Wong need is the Strategic Portfolio Management visibility layer that makes every program investment defensible at the Board and ORSA level — before it becomes a question they cannot answer.</div>
+  </div>
+
+  <div class="hyp-card">
+    <div class="hyp-num">01</div>
+    <div class="hyp-title">Making the $300M Operations Redesign Investment Defensible</div>
+    <div class="hyp-body">SCIF cut $300M in annual fixed expenses through an Operations Redesign. That is an extraordinary organizational achievement. But without portfolio governance, there is no structured answer to the question the board is already asking: which programs drove those savings, which are still in flight, and how do we allocate the next dollar of transformation investment to maximize impact? Planview Portfolios gives Alvin Cheung's team a real-time portfolio view of program performance against agreed business value criteria — replacing qualitative status updates with quantified portfolio decisions that hold up under governance scrutiny.</div>
+    <div class="hyp-tags"><span class="tag tag-teal">Portfolios (SPM)</span><span class="tag">Business Value Scoring</span><span class="tag">Portfolio ROI Reporting</span></div>
+  </div>
+
+  <div class="hyp-card amber">
+    <div class="hyp-num">02</div>
+    <div class="hyp-title">Unlocking Anvi AI: From Security Hold to Operational Advantage</div>
+    <div class="hyp-body">SCIF came within days of activating Planview Anvi in November 2025 before IT security whitelisting delayed the process. That friction was administrative, not architectural — the path was established during the Portfolios security clearance and the same documentation applies. Once Anvi is active, SCIF's ePMO gains AI-powered delivery signals across its portfolio: which programs are trending at risk before they appear in status reports, where resource consumption is diverging from plan, and which commitments need to be renegotiated before they become escalations. For an organization managing 130,000 policyholders with an operational SLA mandate, catching program risk in week 3 rather than month 6 is a direct actuarial benefit.</div>
+    <div class="hyp-tags"><span class="tag tag-teal">Planview Anvi AI</span><span class="tag">Predictive Risk Detection</span><span class="tag">Delivery Outcome Forecasting</span></div>
+  </div>
+
+  <div class="hyp-card">
+    <div class="hyp-num">03</div>
+    <div class="hyp-title">Solving the Tool Sprawl Problem That Started This Relationship</div>
+    <div class="hyp-body">The original 2023 RFP was driven by a specific, well-documented pain: SCIF's PMO was managing strategic programs across SharePoint, Microsoft Project, Confluence, JIRA, Excel, and PowerPoint — with no integrated executive dashboard, no cross-location visibility, and no single intake system. Planview won the RFP on that basis. Today, 2,765 E1 licenses and 264 PP licenses are deployed — but the collaboration and cross-functional work management problem that was cited at 2,500 users is still being served by a 264-seat deployment. The tool sprawl problem is not solved; it has been partially addressed. A seat expansion to match actual demand with a unified PP and LK environment closes the original problem that justified the investment in the first place.</div>
+    <div class="hyp-tags"><span class="tag">E1 (existing)</span><span class="tag">Projectplace Expansion</span><span class="tag tag-teal">LeanKit Scale</span><span class="tag">Single Platform</span></div>
+  </div>
+
+  <div class="hyp-card amber">
+    <div class="hyp-num">04</div>
+    <div class="hyp-title">Portfolio Governance for ORSA and Board Compliance Credibility</div>
+    <div class="hyp-body">SCIF's March 2026 Governance Committee documents reference the 2025 ORSA submission and SB 446 compliance obligations. The ORSA framework requires SCIF to demonstrate that its risk management framework is adequate and that program-level risks are being actively managed. Without a structured portfolio layer, risk program tracking is manual and inconsistent. Planview's portfolio governance framework provides the structured, auditable program visibility that makes SCIF's ORSA submission more defensible and its board reporting more credible. This is not a technology conversation for the CISO — it is a governance conversation for Alvin Cheung and the board.</div>
+    <div class="hyp-tags"><span class="tag tag-amber">Board Governance</span><span class="tag">ORSA Compliance</span><span class="tag">Audit-Ready Portfolio Tracking</span></div>
+  </div>
+
+  <div class="hyp-card">
+    <div class="hyp-num">05</div>
+    <div class="hyp-title">Protecting the Planview Footprint Against the Microsoft Alternative</div>
+    <div class="hyp-body">The stated reason for blocking the Q4 2025 PP expansion was "enough licenses today." The unstated alternative is Microsoft Teams, which SCIF has at no incremental cost as part of its enterprise license. The competitive defense is not a feature comparison with Teams — it is a portfolio governance argument. Microsoft Teams does not provide PMO-level portfolio visibility, executive dashboards that connect work to business value, or Anvi AI delivery intelligence. The moment SCIF substitutes Teams collaboration for PP as its work management layer, the entire Planview investment loses its connective tissue. The expansion business case is also a retention business case.</div>
+    <div class="hyp-tags"><span class="tag tag-red">Competitive Defense</span><span class="tag">PP Retention</span><span class="tag">Portfolio vs Collaboration</span></div>
+  </div>
+</div>
+
+<!-- COMPETITIVE -->
+<div id="section-competitive" class="section">
+  <div class="section-title">Competitive Landscape</div>
+  <div class="section-desc">Technology intelligence from Salesforce CRM, Demandbase, intent signals, and the 2023-2025 RFP competitive history.</div>
+
+  <div class="alert alert-amber">
+    <div class="alert-icon">🔍</div>
+    <div>
+      <div class="alert-title">Competitive Intent Signal: Asana</div>
+      <div class="alert-body">Demandbase is detecting Asana as a competitive intent keyword at SCIF (engagio__Competitive_Intent_Keywords_longtext__c = "asana"). This indicates someone at SCIF is actively researching Asana. At 264 PP seats against a stated demand of 2,500, there is a real risk of shadow tool adoption. First-mover outreach to Kathleen Radic and Randi Shepard on PP seat expansion should address this signal directly.</div>
+    </div>
+  </div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-name">Planview (Incumbent) ✓</div>
+      <div class="comp-desc">Existing customer — expansion motion</div>
+      <div class="comp-item"><span class="comp-check">✓</span> 2,765 E1 + 264 PP/LK seats — deep incumbent</div>
+      <div class="comp-item"><span class="comp-check">✓</span> MSA fully executed — no re-contracting required</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Infosec cleared — AI addendum signed</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Satt Bains is a registered Planview Connect attendee</div>
+      <div class="comp-item"><span class="comp-check">✓</span> SPM, PPM, Agile in one platform</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Anvi AI path established — activation is a configuration step</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Gartner MQ SPM Leader</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Microsoft Teams / M365</div>
+      <div class="comp-desc">Primary substitution threat for PP seats (zero incremental cost)</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Already in enterprise license — $0 marginal cost</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Familiar UI — low adoption friction</div>
+      <div class="comp-item"><span class="comp-x">✗</span> Not a portfolio management platform</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No portfolio-level executive dashboards</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No intake, prioritization, or business value scoring</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No Anvi AI delivery intelligence</div>
+      <div class="comp-item"><span class="comp-x">✗</span> Disconnects execution from portfolio governance</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">Asana</div>
+      <div class="comp-desc">Active competitive intent signal detected via Demandbase</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Strong UX and ease of adoption</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Lower price point than Planview</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No strategic portfolio management layer</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No governance or ORSA-ready portfolio reporting</div>
+      <div class="comp-item"><span class="comp-x">✗</span> Work management only — no portfolio prioritization</div>
+      <div class="comp-item"><span class="comp-x">✗</span> Disconnected from SCIF's existing E1 investment</div>
+      <div class="comp-item"><span class="comp-mid">~</span> Shadow adoption risk at team level — act now</div>
+    </div>
+    <div class="comp-card">
+      <div class="comp-name">ServiceNow</div>
+      <div class="comp-desc">Lost to Planview in 2025 RFP — residual risk</div>
+      <div class="comp-item"><span class="comp-check">✓</span> Strong IT enterprise footprint in insurance sector</div>
+      <div class="comp-item"><span class="comp-mid">~</span> SPM capability improving but limited vs Planview</div>
+      <div class="comp-item"><span class="comp-x">✗</span> ITSM platform — not purpose-built for PMO governance</div>
+      <div class="comp-item"><span class="comp-x">✗</span> Was down-selected against Planview in SCIF's 2025 RFP</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No value-based portfolio prioritization engine</div>
+      <div class="comp-item"><span class="comp-x">✗</span> No Agile/hybrid delivery support for PMO</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title">Prior Technology Stack (from 2023 RFP SDR Notes)</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+      <span class="tag tag-grey">SharePoint</span>
+      <span class="tag tag-grey">Microsoft Project</span>
+      <span class="tag tag-grey">Confluence</span>
+      <span class="tag tag-red">JIRA</span>
+      <span class="tag tag-grey">Excel</span>
+      <span class="tag tag-grey">PowerPoint (manual reporting)</span>
+      <span class="tag tag-amber">Microsoft Teams (free — ongoing risk)</span>
+      <span class="tag tag-red">Asana (intent signal — active risk)</span>
+    </div>
+    <p style="font-size:12px;color:var(--sub);margin-top:12px;">Original qualification confirmed: SCIF needed a single integrated intake, portfolio, and collaboration system to replace fragmented tooling. Planview was selected for this reason. Fragmentation risk remains if PP seat count does not scale to match actual demand.</p>
+  </div>
+</div>
+
+<!-- OUTREACH -->
+<div id="section-outreach" class="section">
+  <div class="section-title">Outreach Playbook</div>
+  <div class="section-desc">10 fully differentiated emails and accompanying phone talk tracks. Each targets a specific stakeholder with a unique value angle. No em-dashes used throughout.</div>
+
+  <!-- Outreach 1 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">1</div>
+        <div class="outreach-person">Kathleen Radic — Director, PMO</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: High-intent signal follow-through</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">What brought you to planview.com this week, Kathleen?</div>
+        <div class="email-body">Kathleen,
+
+I noticed you were spending time on the Planview site recently and wanted to reach out directly. My name is Larry Bonham and I am the account executive supporting your team.
+
+Your organization has been a Planview customer since 2009, and the platform your team uses today covers a significant portion of your PMO's execution layer. What I want to understand is what you are looking for that you are not finding today.
+
+My read is that a Director-level PMO leader researching the platform is either validating an expansion case internally or investigating whether a capability gap exists. Either scenario is worth a direct conversation, because both have answers.
+
+I would welcome 20 minutes to hear what is on your mind. Would this week or next work for a brief call?
+
+Larry Bonham
+Strategic Account Executive, Planview
+lbonham@planview.com · (650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Kathleen, my name is Larry Bonham from Planview. I am the account executive supporting your organization and I wanted to reach out personally. I noticed you were spending time on our website recently, and for someone at your level that usually means one of two things: either you are building an internal case for expanding what your team is doing with the platform, or you have found a gap in what the current deployment covers. I wanted to ask directly which it is."
+
+Key pivot: "Your team has 2,765 EnterpriseOne seats and 264 Projectplace licenses in place. The original RFP in 2023 identified demand for up to 2,500 Projectplace users and a unified intake and portfolio governance layer. I want to understand whether that need has been addressed internally or whether there is still a gap worth solving."
+
+Close: "Can we find 20 minutes this week so I can ask you a few questions about where the platform is today and where you need it to go?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 2 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">2</div>
+        <div class="outreach-person">Satt Bains — VP, PMO</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: Planview Connect 2026 engagement</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">See you at Planview Connect, Satt — a conversation to prepare for</div>
+        <div class="email-body">Satt,
+
+I see you are registered for Planview Connect 2026 next month. That is great news. I want to make sure we use the event productively and not just for a handshake.
+
+There are two topics I would like to put in front of you before Connect so the conversation there has context.
+
+First: Anvi AI. Your team came within days of activating Anvi in November before IT security whitelisting created a delay. The security path your team established for Portfolios covers Anvi through the same clearance framework. I want to walk you through what it would take to get Anvi active in your environment within 30 days of Connect.
+
+Second: the Projectplace expansion. In October 2024, you confirmed demand for up to 2,500 PP users and indicated you could execute an order form this year if the payment terms aligned. That conversation was shelved when the December budget hold came through. I want to understand whether the demand picture has changed or whether it is still a sequencing and approval question.
+
+Would a 30-minute call in the next two weeks set us up well for Connect?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Satt, Larry Bonham from Planview. I wanted to connect before Planview Connect next month because I think we can make better use of our time there if we have a pre-conversation first. There are two things I want to put in front of you."
+
+First topic: "Anvi AI. Your team cleared Infosec for Portfolios and the AI addendum is signed. The whitelisting issue that blocked Anvi in November is a configuration step that has since been resolved for other customers in the same situation. I want to walk you through what activation looks like today."
+
+Second topic: "The Projectplace seat expansion. You confirmed demand at 2,500 users in October 2024 and indicated willingness to sign an order form in Q4. The December hold came from Alvin. I want to understand whether the demand has changed or whether the internal case just needs to be framed differently for executive approval."
+
+Ask: "Can we find 30 minutes before Connect to work through both?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 3 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">3</div>
+        <div class="outreach-person">Alvin Cheung — SVP, Enterprise Project Services</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: $300M Ops Redesign ROI accountability</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">Connecting State Fund's Operations Redesign outcomes to portfolio accountability</div>
+        <div class="email-body">Alvin,
+
+State Fund's Operations Redesign is one of the most compelling transformation stories in California public sector insurance. Cutting $300 million in annual fixed expenses while maintaining service quality for 130,000 policyholders is a board-level achievement.
+
+The question I want to bring to you is one that follows every transformation of that scale: how do you now tell the story of which programs drove those results, which are still in flight, and what the next investment cycle should prioritize?
+
+Planview already operates inside your ePMO through EnterpriseOne and Portfolios. What your team does not yet have is the Strategic Portfolio Management layer that connects program execution to agreed business value criteria, so every budget conversation with the board is built on portfolio data rather than program narratives.
+
+I am not asking for a decision. I am asking for 20 minutes to walk you through what that portfolio governance layer looks like specifically for State Fund's context. Would that be a worthwhile conversation?
+
+Larry Bonham
+Strategic Account Executive, Planview
+lbonham@planview.com · (650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Alvin, my name is Larry Bonham from Planview. I am the account executive supporting your ePMO team. I want to be direct about why I am calling. State Fund's $300M Operations Redesign is an extraordinary achievement, and I think there is a question that naturally follows an investment of that scale: how do you tell the story of which programs delivered results and which should be continued, scaled, or retired?"
+
+Bridge: "Planview is already inside your organization through EnterpriseOne and Portfolios. The gap is the portfolio governance layer above the execution tools your team uses today. That layer connects program performance to the business value criteria that make budget decisions defensible at the board level."
+
+Acknowledge prior interaction: "I know the December 2025 expansion conversation did not go the direction we both hoped. I want to reframe that conversation around the ROI case for the full portfolio governance layer rather than a seat count discussion."
+
+Ask: "Would 20 minutes to walk through what that looks like for State Fund be worth your time?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 4 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">4</div>
+        <div class="outreach-person">Alicia Wong — SVP, Enterprise Project Services</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: ePMO portfolio governance credibility</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">The ePMO credibility question that portfolio governance answers</div>
+        <div class="email-body">Alicia,
+
+Every ePMO leader at an organization of State Fund's complexity eventually faces the same governance challenge: when competing programs argue for the same resources and all initiatives are presented as critical, the decision about what gets prioritized first either reflects business value or it reflects organizational influence.
+
+State Fund has made extraordinary progress on cost efficiency through the Operations Redesign. The next phase of maturity is ensuring that the programs competing for the next investment cycle are evaluated on agreed business value criteria rather than subjective program advocacy.
+
+Planview already runs inside your organization at the execution level. I would welcome 20 minutes to discuss what it looks like to extend that investment into a portfolio governance layer that gives your ePMO function a defensible, structured basis for prioritization decisions at the board level.
+
+Would that conversation be worth your time?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Alicia, this is Larry Bonham from Planview. I am calling because your role leading Enterprise Project Services puts you at the center of a portfolio governance challenge that Planview addresses directly."
+
+Key message: "When programs compete for the same PMO and IT resources and every initiative is presented as critical, the prioritization decision defaults to whoever makes the most compelling argument in the room. A portfolio governance framework grounded in agreed business value criteria replaces that dynamic with a structured, defensible process."
+
+Connection to SCIF context: "Your organization has already invested in the platform's execution layer. What I want to discuss is the governance layer above it that makes your ePMO's prioritization decisions credible at the board level, not just internally."
+
+Ask: "Can we find 20 minutes to talk through what that looks like for State Fund specifically?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 5 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">5</div>
+        <div class="outreach-person">Randi Shepard — Senior Project Manager, Platform Admin</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: Platform expansion gap discovery</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">Your platform experience matters for what comes next at State Fund</div>
+        <div class="email-body">Randi,
+
+You have been one of the most consistently engaged users on the Planview platform at State Fund, and I want to use that directly.
+
+I am trying to understand the gap between what the current deployment covers and what your stakeholders are asking for. Specifically: are there reporting requests you cannot fulfill today, prioritization conversations the platform does not support well, or executive asks that still require manual effort to answer?
+
+Those gaps are the clearest signal of where the next phase of your Planview investment delivers the most immediate value. And the timing is good to surface them now, before the renewal cycle creates a different kind of pressure.
+
+Would 20 minutes to walk through your current platform experience and where you see the ceiling be useful? I would genuinely like to hear your honest read.
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Randi, Larry Bonham from Planview. I am calling because your role as platform administrator gives you a view of the deployment that I genuinely want to understand before I have a conversation with your leadership team about where the investment should go next."
+
+Key discovery questions: "(1) What reporting requests are you being asked for that the platform cannot currently fulfill? (2) Are there executive dashboards or portfolio views that are being built manually outside the platform? (3) Is there work happening in other tools that should be running through Planview but is not?"
+
+Anvi angle: "I also want to understand where things stand with Anvi. Your team came close to activating it in November. I want to make sure you have everything you need to get that moving again."
+
+Ask: "Can we find 20 minutes this week for that conversation?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 6 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">6</div>
+        <div class="outreach-person">Jennifer Patten — Senior Project Manager</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: Internal champion re-activation</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">You started this — here is where it stands now, Jennifer</div>
+        <div class="email-body">Jennifer,
+
+You were the person who initiated State Fund's search for a portfolio management platform in 2023. The team you built the case for went through an 18-month RFP process, cleared Infosec, negotiated legal on six separate documents, and ultimately became a Planview customer.
+
+I wanted to reach out personally because the next chapter of that decision is now in front of us, and your perspective on where the platform is today versus where your team originally hoped it would be is genuinely useful.
+
+The original RFP identified demand for up to 2,500 Projectplace users, AI-assisted portfolio management, and a single integrated system to replace the tool sprawl your team was dealing with. Two years in, I want to understand how much of that original vision has been realized and where the gaps remain.
+
+Would you be willing to spend 20 minutes with me on that? Your honest read would help me make a better case internally for the next phase.
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Jennifer, Larry Bonham from Planview. You were the original internal champion who drove the 2023 RFP that brought us into State Fund. I wanted to reach out to you directly because your perspective two years in is something I cannot get from anyone else."
+
+Key ask: "The original vision for the platform included 2,500 Projectplace users, AI-assisted portfolio management, and a single system replacing the fragmented tooling your team was dealing with. I want to know honestly: how much of that has been realized and what still feels like an open problem?"
+
+Why it matters: "Your read on where the platform is falling short of its original promise is the strongest internal evidence I can bring to the conversation about what the next investment should look like. I am not asking you to advocate for anything. I am asking you to give me your honest assessment."
+
+Ask: "Can we find 20 minutes this week for that conversation?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 7 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">7</div>
+        <div class="outreach-person">Ajay Wadhwa — CISO</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: Anvi AI security re-activation path</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">Planview Anvi AI security path — building on what your team already cleared</div>
+        <div class="email-body">Ajay,
+
+Your team completed a thorough security review of Planview's platform in 2024 and 2025, including the AI addendum, DPA, Supplier Supplement, and Security Addendum. That review was rigorous and your organization made the right call to go through it carefully.
+
+I am reaching out because the next phase of State Fund's Planview deployment includes Planview Anvi AI, and I want to make sure the path forward for your security team is as frictionless as possible given the groundwork you have already laid.
+
+Specifically, the whitelisting configuration that was pending in November 2025 has since been documented and resolved for comparable insurance sector deployments. I can provide your team with the updated technical documentation and share how other California public sector organizations have navigated the same security review efficiently.
+
+Would 20 minutes to walk through the Anvi security architecture and the specific documents your team would need be a useful use of your time?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Ajay, Larry Bonham from Planview. Your team completed a very thorough security review of our platform in 2024 and 2025 and I want to acknowledge that directly. The AI addendum, DPA, and Security Addendum process was handled with real rigor."
+
+Context: "The reason I am calling is that State Fund's next phase of Planview deployment includes Anvi AI, and in November 2025 there was a whitelisting configuration issue that paused the activation. I want to make sure we give your team everything needed to resolve that cleanly and quickly."
+
+What I can offer: "I can provide updated technical documentation on Anvi's data architecture, share how comparable insurance sector deployments handled the same security configuration, and connect your team directly with our security engineers if a technical call would be useful."
+
+Ask: "Would 20 minutes to walk through the Anvi security path be a useful conversation for your team?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 8 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">8</div>
+        <div class="outreach-person">Mona Sekla — Director, Business Analysis</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: BA function portfolio visibility gap</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">Business analysis work and portfolio visibility — a specific conversation for your function</div>
+        <div class="email-body">Mona,
+
+The business analysis function at an organization of State Fund's complexity sits at a specific intersection: your team produces the analytical work that informs program decisions, but the tools that team uses are often disconnected from the portfolio layer where those decisions actually get made.
+
+Planview operates inside your organization today at the ePMO and PMO level. What I want to understand is whether the BA function has visibility into the portfolio, or whether the connection between your team's analytical work and the program prioritization decisions happening above it is still a manual, meeting-driven process.
+
+That gap has a direct answer in the Planview platform, and I would welcome a brief conversation to understand whether it is a real problem for your function.
+
+Would 20 minutes to discuss what collaboration and portfolio visibility looks like for a business analysis function at State Fund's scale be worth your time?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Mona, this is Larry Bonham from Planview. I am calling because your role leading the business analysis function at State Fund puts you at a specific intersection that I think Planview addresses directly."
+
+Key message: "The BA function produces the analytical work that informs program investment decisions. But when that work is disconnected from the portfolio layer where decisions actually get made, the analysis does not change the outcome. It just describes it after the fact."
+
+Connection to platform: "Planview runs inside your organization today through the ePMO. What I want to understand is whether your team's analytical work is connected to the portfolio governance layer, or whether the handoff from BA output to program prioritization still happens outside the platform."
+
+Ask: "Can we find 20 minutes to talk through what that connection looks like in practice?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 9 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">9</div>
+        <div class="outreach-person">Alexandra Crouse — RFP Administrator / Procurement</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: Proactive commercial path preparation</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">Commercial path for State Fund's next Planview expansion — already in place</div>
+        <div class="email-body">Alexandra,
+
+You navigated State Fund through one of the more complex procurement processes I have been part of, and the commercial foundation you helped establish in 2025 is going to make the next phase significantly more straightforward.
+
+State Fund has a fully executed Subscription Services Agreement in place. No PO is required. Any expansion follows a direct amendment path to the existing contract. There is no Ariba portal process, no new MSA negotiation, and no repeat of the security addendum process your team already completed.
+
+I want to make sure your team is aware of this commercial structure well in advance of when the business case reaches approval stage, so procurement is a facilitator rather than a gating step.
+
+Would 15 minutes to walk through the amendment structure and timeline be useful for your team to have on record?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Alexandra, Larry Bonham from Planview. I want to be brief and practical. You guided State Fund through a very thorough procurement process in 2024 and 2025. The commercial foundation you helped build is going to make the next expansion much faster for your team."
+
+Key points: "(1) The Subscription Services Agreement is fully executed — March 2025. (2) No PO required, NET 30 annual billing already established. (3) Expansion is a direct amendment. No Ariba portal, no new RFP, no repeat of the security documentation process."
+
+Ask: "I want to give your team a 15-minute briefing on the amendment structure and timeline so you are commercially ready when the business case comes through for approval. When would that be convenient?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outreach 10 -->
+  <div class="outreach-item">
+    <div class="outreach-header" onclick="toggleOutreach(this)">
+      <div style="display:flex;align-items:center;">
+        <div class="outreach-num">10</div>
+        <div class="outreach-person">Kunwar Singh — Project Manager</div>
+        <div class="outreach-angle">&nbsp;·&nbsp; Opening: PM-level platform adoption and gap discovery</div>
+      </div>
+      <div class="outreach-arrow">▼</div>
+    </div>
+    <div class="outreach-body">
+      <div class="outreach-tabs">
+        <button class="outreach-tab active" onclick="switchTab(this,'email')">Email</button>
+        <button class="outreach-tab" onclick="switchTab(this,'talk')">Talk Track</button>
+      </div>
+      <div class="email-pane active">
+        <div class="email-label">Subject</div>
+        <div class="email-subject">A quick question for you about how you use Planview today, Kunwar</div>
+        <div class="email-body">Kunwar,
+
+You have been part of the Planview ecosystem at State Fund since the original implementation, and I have a simple question for you.
+
+In your day-to-day work as a project manager, are there things you wish the platform did that it does not currently do? Reporting formats that require manual workaround. Collaboration features that your team uses other tools for. Portfolio visibility that you have to recreate outside the system.
+
+Your answer tells me more about where the next investment should go than almost any other input I can gather. I am not looking for a formal assessment. I am asking for 15 minutes of your honest experience.
+
+Would that be worth your time this week?
+
+Larry Bonham
+(650) 906-9524</div>
+      </div>
+      <div class="talk-pane">
+        <div class="talk-block">Opening: "Kunwar, this is Larry Bonham from Planview. I am the account executive supporting State Fund and I wanted to reach out to you directly because project managers are the people who actually live in the platform every day, and your experience is the most honest signal I have about where it is working and where it is not."
+
+Key discovery questions: "(1) What do you currently use outside of Planview that you feel should be inside it? (2) Are there reporting requests from your stakeholders that require manual effort to fulfill? (3) Is there any part of your project management workflow where the platform creates friction rather than reducing it?"
+
+Why this matters: "I am building a picture of the gap between what the platform is delivering today and what your PMO needs it to deliver at the next level of maturity. Your input is a direct input into that picture."
+
+Ask: "Can we find 15 minutes this week or next?"</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DEAL HISTORY -->
+<div id="section-history" class="section">
+  <div class="section-title">Deal History and Timeline</div>
+  <div class="section-desc">Full opportunity history from Salesforce CRM. 10 total opportunities since 2009. Customer since January 2009.</div>
+
+  <div class="two-col" style="margin-bottom:24px;">
+    <div class="card">
+      <div class="card-title">Deal Mechanics</div>
+      <div class="kv-row"><span class="kv-label">Current ARR</span><span class="kv-value" style="color:var(--teal);font-weight:700;">$200,449</span></div>
+      <div class="kv-row"><span class="kv-label">Total BRA</span><span class="kv-value">$200,449</span></div>
+      <div class="kv-row"><span class="kv-label">Lifetime Value</span><span class="kv-value">$400,899</span></div>
+      <div class="kv-row"><span class="kv-label">Open Renewal Pipeline</span><span class="kv-value">$200,449 (Apr 2027)</span></div>
+      <div class="kv-row"><span class="kv-label">Customer Since</span><span class="kv-value">January 6, 2009</span></div>
+      <div class="kv-row"><span class="kv-label">Total Opportunities</span><span class="kv-value">10</span></div>
+      <div class="kv-row"><span class="kv-label">MSA Effective</span><span class="kv-value">March 28, 2025</span></div>
+      <div class="kv-row"><span class="kv-label">MSA Type</span><span class="kv-value">Subscription Services Agreement</span></div>
+      <div class="kv-row"><span class="kv-label">Payment Terms</span><span class="kv-value">NET 30 / Annual Billing</span></div>
+      <div class="kv-row"><span class="kv-label">PO Required</span><span class="kv-value">No</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Open and Recent Opportunities</div>
+      <table class="data-table">
+        <tr><th>Opportunity</th><th>Stage</th><th>Amount</th><th>Close</th></tr>
+        <tr><td>Renewal 2027-04-30</td><td><span class="badge badge-caution">Created</span></td><td>$200,449</td><td>Apr 2027</td></tr>
+        <tr><td>Renewal 2026-04-30 (SCIF-SUB-002)</td><td><span class="badge badge-won">Closed Won</span></td><td>$200,449</td><td>Apr 2026</td></tr>
+        <tr><td>SCIF PP User Add + Unlimited Anvi</td><td><span class="badge badge-lost">Closed Lost</span></td><td>$152,043</td><td>Dec 2025</td></tr>
+        <tr><td>New Logo RFP (SCIF-SUB-002)</td><td><span class="badge badge-won">Closed Won</span></td><td>$200,449</td><td>Apr 2025</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Relationship Timeline</div>
+    <div class="timeline" style="margin-top:16px;">
+      <div class="timeline-item">
+        <div class="timeline-dot dot-future"></div>
+        <div class="timeline-date">Target: Q3-Q4 2026</div>
+        <div class="timeline-name">SPM Expansion + Anvi Activation + PP Seat Growth</div>
+        <div class="timeline-detail">Target expansion motion. Anvi AI activation, ProjectPlace seat expansion to meet stated 2,500-user demand, and SPM portfolio governance depth. Direct amendment path — no Ariba RFP required. Alvin Cheung must approve; build case through Satt Bains and Kathleen Radic. <span class="timeline-amount" style="color:var(--teal);">Target: $100K-$200K incremental ARR</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-won"></div>
+        <div class="timeline-date">April 2026</div>
+        <div class="timeline-name">Renewal Closed Won — SCIF-SUB-002</div>
+        <div class="timeline-detail">Full ARR renewal. Guardian Status: Saved Full ARR. <span class="timeline-amount" style="color:var(--teal);">$200,449</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-lost"></div>
+        <div class="timeline-date">December 2025</div>
+        <div class="timeline-name">PP User Add + Unlimited Anvi — Closed Lost</div>
+        <div class="timeline-detail">Satt Bains approved but Alvin Cheung (exec sponsor) blocked, citing "enough licenses today." Anvi also blocked by IT security whitelisting. Unlimited Anvi pricing discontinued after year-end. Key lesson: need to build Alvin's ROI case independently through Satt before bringing pricing. <span class="timeline-amount" style="color:var(--red);">$152,043 lost</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-won"></div>
+        <div class="timeline-date">April 30, 2025</div>
+        <div class="timeline-name">New Logo Win — RFP SCIF-SUB-002</div>
+        <div class="timeline-detail">18-month RFP process. Beat ServiceNow in final down-select. Included $60K implementation services (SOW signed by Alvin Cheung). Cleared Infosec, executed 6 legal documents including AI Addendum, DPA, Security Supplement. Entry persona: Jennifer Patten (PM), Satt Bains (VP), Alicia Wong (SVP). <span class="timeline-amount" style="color:var(--teal);">$200,449 ARR + $60K services</span></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-lost"></div>
+        <div class="timeline-date">January 2024</div>
+        <div class="timeline-name">First RFP Attempt — Closed Lost (Initial Vendor)</div>
+        <div class="timeline-detail">SCIF initially selected a vendor that "did not work out." RFP re-opened July 2024. This created the second-chance opportunity Planview won in April 2025. Lost reason: "Already had ServiceNow and did not tell why we either lost or won." Blind RFP.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-open"></div>
+        <div class="timeline-date">November 2023</div>
+        <div class="timeline-name">RFP Received — 18-Month Sales Cycle Begins</div>
+        <div class="timeline-detail">SDR received RFP from Jennifer Patten. Original requirements: small PMO, manage projects efficiently, sharing with execs, multi-location access, budget tracking. Tools in use: SharePoint, MS Project, Confluence, PowerPoint, Excel, JIRA. ~60 initial target users.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-won"></div>
+        <div class="timeline-date">January 6, 2009</div>
+        <div class="timeline-name">First Win — CA State Insurance Fund PPM</div>
+        <div class="timeline-detail">Original Planview win at State Fund. Opportunity: CA State Insurance Fund MF PPM. Established the 17-year customer relationship that persists today.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE FEED -->
+<div id="section-livefeed" class="section">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+    <div class="section-title" style="margin-bottom:0;">Live Feed</div>
+    <button id="refresh-btn" onclick="refreshFeed()" style="
+      display: flex; align-items: center; gap: 8px;
+      background: var(--navy); color: var(--accent);
+      border: 1px solid rgba(200,151,58,0.4);
+      padding: 10px 20px; border-radius: 8px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    " onmouseover="this.style.background='#163354'" onmouseout="this.style.background='var(--navy)'">
+      <span id="refresh-icon" style="font-size:15px;display:inline-block;transition:transform 0.6s;">↻</span>
+      Refresh News
+    </button>
+  </div>
+  <div class="section-desc" id="feed-status">Recent SCIF news, board governance signals, and market developments. Use as outreach triggers and urgency drivers.</div>
+
+  <div id="feed-container">
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">SCIF Governance Committee · March 4, 2026</div>
+    <div class="feed-title">SB 446 Compliance: 30-Day Data Breach Notification Requirement Now in Effect</div>
+    <div class="feed-body">California Senate Bill 446, signed Q4 2025, requires SCIF to notify affected individuals within 30 calendar days of discovering a data breach. The Privacy Office has updated internal notification procedures. SCIF also submitted its 2025 Own Risk and Solvency Assessment (ORSA) reflecting on its risk management framework adequacy.</div>
+    <div class="feed-trigger">Outreach Trigger: Compliance program urgency creates portfolio governance need. Use with Alvin: "How does your PMO demonstrate to the board that compliance programs are being managed with the same rigor as operational initiatives?"</div>
+  </div>
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">Demandbase Intent Signal · Live</div>
+    <div class="feed-title">Competitive Intent: Asana Keyword Detected at SCIF</div>
+    <div class="feed-body">Demandbase is actively tracking Asana as a competitive intent keyword at SCIF. This signal combined with the 264-seat Projectplace deployment against a stated demand of 2,500 users indicates active evaluation of lightweight PMO alternatives. The Microsoft Teams substitution risk is also active — SCIF leadership cited M365 as a free alternative during December 2025 negotiations.</div>
+    <div class="feed-trigger">Outreach Trigger: Reach Kathleen Radic and Randi Shepard immediately with a PP seat expansion conversation. Address the competitive dynamic before Asana gains internal traction.</div>
+  </div>
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">Salesforce CRM Signal · April 16, 2026</div>
+    <div class="feed-title">Satt Bains Registered for Planview Connect 2026</div>
+    <div class="feed-body">VP PMO Satt Bains has registered for Planview Connect 2026, Planview's annual customer conference. This is the strongest engagement signal from the account in Q2 2026. Last activity date April 16, 2026.</div>
+    <div class="feed-trigger">Outreach Trigger: Reach Satt before Connect to pre-load the Anvi and PP expansion conversations. "I want to make sure we use your time at Connect productively."</div>
+  </div>
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">Salesforce CRM Signal · April 28, 2026</div>
+    <div class="feed-title">Kathleen Radic: 5+ Website Visits in a Single Day</div>
+    <div class="feed-body">Director PMO Kathleen Radic visited the Planview website at least 5 times in a single day. This is a high-intent signal for a director-level buyer and represents the most significant new contact activity in the account since the renewal closed.</div>
+    <div class="feed-trigger">Outreach Trigger: First-touch outreach to Kathleen Radic this week. Lead with curiosity: "What brought you to our site recently, Kathleen?"</div>
+  </div>
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">Randi Shepard Activity · April 28, 2026</div>
+    <div class="feed-title">Primary Platform Admin Active Today — Last Login April 28, 2026</div>
+    <div class="feed-body">Randi Shepard (Sr. PM, Platform Admin) logged into the Planview platform today. She has been engaged across Strategic Planning, Portfolio Resource Management, and Collaborative Work solution areas. Most recent marketing touch: webinar on AI-Powered Outcomes and the Future of Portfolio Management (March 2026).</div>
+    <div class="feed-trigger">Outreach Trigger: Randi's active engagement and interest in AI-powered outcomes is the right entry point to restart the Anvi conversation.</div>
+  </div>
+
+  <div class="feed-item" data-static>
+    <div class="feed-source">SCIF Public Profile · 2026</div>
+    <div class="feed-title">State Fund: "Innovating for the Next 100 Years" — Claims and Safety Innovation</div>
+    <div class="feed-body">SCIF's LinkedIn and public materials emphasize a strategic commitment to innovation in workplace safety and injured worker care alongside operational efficiency. The organization has operated for over 100 years and publicly frames its next chapter as one of technology-enabled transformation.</div>
+    <div class="feed-trigger">Outreach Trigger: Frame Planview's portfolio governance as the infrastructure that ensures SCIF's innovation investments are prioritized and delivered with board-level rigor.</div>
+  </div>
+
+  </div><!-- end feed-container -->
+</div>
+
+
+<div id="section-connect2026" class="section">
+
+<!-- COVER -->
+<div class="c26-cover">
+  <div class="c26-cover-grid"></div>
+  <div class="c26-cover-glow"></div>
+  <div class="c26-cover-eyebrow">Planview Connect 2026 · May 3–5 · Hollywood, Florida</div>
+  <div class="c26-cover-title">Your <em>personalized</em><br>session guide.</div>
+  <div class="c26-cover-meta">
+    <span class="c26-cover-pill red">State Compensation Insurance Fund</span>
+    <span class="c26-cover-pill">Satt Bains · VP PMO</span>
+    <span class="c26-cover-pill">Randi Shepard · Sr. PM</span>
+    <span class="c26-cover-pill">Kathleen Radic · Director PMO</span>
+    <span class="c26-cover-pill">Prepared by Planview</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="c26-intro">
+  <div class="c26-intro-text">
+    We've curated the sessions most relevant to <strong>SCIF's Planview environment and goals</strong> — covering Anvi AI, Investment &amp; Capacity Planning, Enterprise Roadmaps, Planview Hub, and Resource Management. Sessions are mapped to each attendee's role and priorities, with split recommendations where parallel sessions both apply.
+  </div>
+  <div class="c26-intro-legend">
+    <div class="c26-legend-item">
+      <span style="color:#C8102E;font-size:18px">★</span>
+      <span><strong>Priority sessions</strong> — highest relevance to SCIF use cases. Don't miss these.</span>
+    </div>
+    <div class="c26-legend-item">
+      <div class="c26-legend-dot" style="background:#888"></div>
+      <span><strong>Recommended</strong> — strong fit, worth attending if schedule allows.</span>
+    </div>
+    <div class="c26-legend-item">
+      <div class="c26-legend-dot" style="background:#1a3a5c"></div>
+      <span><strong>Satt — ExecConnect</strong> — senior leader track Monday AM, then rejoins main conference.</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="c26-body">
+
+  <!-- SUNDAY -->
+  <div class="c26-day-block">
+    <div class="c26-day-label">
+      <div class="c26-day-number">01</div>
+      <div class="c26-day-info">
+        <div class="c26-day-name">Sunday, May 3</div>
+        <div class="c26-day-date">Pre-Conference Day</div>
+        <div class="c26-day-theme c26-theme-sunday">Arrive &amp; Build Skills</div>
+      </div>
+      <div class="c26-day-rule"></div>
+    </div>
+
+    <div class="c26-subheading">Sunday Workshops — 1:00–5:00 PM · Recommend splitting up to cover both</div>
+
+    <div class="c26-split-note two-col">
+      <div class="c26-split-person">
+        <strong>Randi Shepard</strong>
+        <span>Creating Portfolios Agents in Planview Anvi</span> — hands-on Anvi build session; connect to ICP readiness work
+      </div>
+      <div class="c26-split-person">
+        <strong>Kathleen Radic</strong>
+        <span>Hands-On with Planview.Me</span> — Kathleen has confirmed attending this workshop; solidify the Planview.Me rollout approach
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">1:00<br>–<br>5:00 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">University of Planview · Workshop</div>
+        <div class="c26-session-title">"Creating Portfolios Agents in Planview Anvi"</div>
+        <div class="c26-session-speaker">90-minute hands-on workshop · Register in advance</div>
+        <div class="c26-session-why">
+          Anvi is now available for testing at SCIF as production data volume has reached the threshold needed for meaningful AI output. This workshop is the ideal re-entry point — build a working Portfolios AI agent and take home a concrete use case directly tied to <strong>ICP data readiness</strong>, which Kacy's March Anvi demo framed as the first real value motion for SCIF.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority · Randi</span>
+          <span class="c26-tag">Anvi AI</span>
+          <span class="c26-tag">ICP Readiness</span>
+          <span class="c26-tag">Portfolios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">1:00<br>–<br>5:00 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">University of Planview · Workshop</div>
+        <div class="c26-session-title">"Hands-On with Planview.Me"</div>
+        <div class="c26-session-speaker">90-minute hands-on workshop · Kathleen confirmed attending</div>
+        <div class="c26-session-why">
+          Planview.Me rollout is a top-five priority from the April 27 CSM sync. Kathleen has already confirmed she will attend this workshop. This session is the place to work through deployment decisions — reporting structure, embedded vs. standalone — and come to Monday's sessions with a concrete rollout plan in hand.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority · Kathleen</span>
+          <span class="c26-tag">Planview.Me</span>
+          <span class="c26-tag">Reporting</span>
+          <span class="c26-tag">Hands-On</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">1:00<br>–<br>5:00 PM</div>
+        <div class="c26-track-pip" style="background:#888"></div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Connect Expo · Self-Guided</div>
+        <div class="c26-session-title">Expo Floor — Hub, ICP &amp; Enterprise Roadmaps Demo Stations</div>
+        <div class="c26-session-speaker">Open hours · Expo floor</div>
+        <div class="c26-session-why">
+          Use open Expo time to engage the Hub product team on SCIF's ADO/Jira integration requirements (currently paused pending new CIO direction — good time to understand what the integration will look like once it resumes). Also a low-pressure opportunity to see Enterprise Roadmaps in action before the formal roadmap sessions.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag">Hub</span>
+          <span class="c26-tag">Enterprise Roadmaps</span>
+          <span class="c26-tag">ICP</span>
+          <span class="c26-tag">Self-Paced</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">5:00<br>–<br>7:00 PM</div>
+        <div class="c26-track-pip" style="background:#888"></div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Networking · All Attendees</div>
+        <div class="c26-session-title">Welcome Reception</div>
+        <div class="c26-session-speaker">All attendees · Kacy Trumbo &amp; Anthony Cessario — on-site Planview contacts</div>
+        <div class="c26-session-why">
+          Anthony Cessario (VP Sales) is already looped in and excited to make introductions — this is the ideal setting. Kacy will coordinate early introductions to Dave Kurak (Anvi) and Paul Jacobs (Portfolios/Roadmaps) ahead of their Monday roadmap sessions.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag">Networking</span>
+          <span class="c26-tag">All Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONDAY -->
+  <div class="c26-day-block">
+    <div class="c26-day-label">
+      <div class="c26-day-number">02</div>
+      <div class="c26-day-info">
+        <div class="c26-day-name">Monday, May 4</div>
+        <div class="c26-day-date">Primary Conference Day</div>
+        <div class="c26-day-theme c26-theme-monday">Full Day</div>
+      </div>
+      <div class="c26-day-rule"></div>
+    </div>
+
+    <div class="c26-exec-note">
+      <div class="c26-exec-note-label">Satt Bains — ExecConnect Track · Monday AM</div>
+      <div class="c26-exec-note-title">Senior Leader Session (ExecConnect)</div>
+      <div class="c26-exec-note-body">
+        Satt is registered for the <strong>ExecConnect track</strong> — a dedicated session for senior PMO and technology leaders running in parallel to the main conference Monday morning. This is where Satt will be while Randi and Kathleen attend the main-stage keynotes. <strong>Satt rejoins the main conference for afternoon breakouts and roadmap sessions.</strong> Kacy will coordinate timing for Satt's 1:1 with Anthony Cessario and product leadership during Monday afternoon.
+      </div>
+    </div>
+
+    <div class="c26-subheading">Morning Keynotes — Randi &amp; Kathleen attend together while Satt is at ExecConnect</div>
+
+    <div class="c26-session-card">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">8:30<br>–<br>9:35 AM</div>
+        <div class="c26-track-pip" style="background:#888"></div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Keynote</div>
+        <div class="c26-session-title">Welcome to Planview Connect 2026</div>
+        <div class="c26-session-speaker">Matt Zilli, CEO — Planview</div>
+        <div class="c26-session-why">
+          Planview's strategic direction for the year — essential context for every product roadmap session that follows. Good talking points to bring back to Alvin Cheung and Alicia Wong on where the platform is heading.
+        </div>
+        <div class="c26-session-tags"><span class="c26-tag">Keynote</span><span class="c26-tag">Strategy</span></div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">9:50<br>–<br>10:50 AM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Keynote · Product Vision</div>
+        <div class="c26-session-title">"Connecting Planning, Delivery, and Intelligence Across Your Enterprise"</div>
+        <div class="c26-session-speaker">Louise Allen, Chief Product Officer — Planview</div>
+        <div class="c26-session-why">
+          Louise lays out Planview's vision for connecting planning (Portfolios), delivery (AgilePlace/ProjectPlace via Hub), and intelligence (Anvi). This is exactly the path SCIF is on — from <strong>ICP foundation work</strong> through Anvi enablement to connected portfolio governance. Strong content for briefing Alicia Wong on platform direction.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Keynote</span>
+          <span class="c26-tag">AI</span>
+          <span class="c26-tag">Product Vision</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-subheading">Monday Breakouts</div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">11:10<br>–<br>11:40 AM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Peer Deep Dive · Portfolios · ICP</div>
+        <div class="c26-session-title">"Mastering All Methods of Time Tracking: A Deep Dive into IT Demand &amp; Capacity Planning"</div>
+        <div class="c26-session-speaker">Jennifer Williams, Wesco + Izzy Huskic — Planview</div>
+        <div class="c26-session-why">
+          <strong>The most directly relevant session of the conference for SCIF.</strong> ICP foundation work is the #1 priority from the April 27 CSM sync. Wesco's approach — a flexible framework for capturing demand and capacity data across enterprise and BAU project portfolios while minimizing admin burden — maps precisely to SCIF's resource management challenge and the RPM enablement work underway. Take notes here; this is the model to replicate.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority · All Team</span>
+          <span class="c26-tag">ICP</span>
+          <span class="c26-tag">Resource Management</span>
+          <span class="c26-tag">Portfolios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">12:00<br>–<br>12:30 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Planning · Customer Story</div>
+        <div class="c26-session-title">"Making Demand &amp; Capacity Planning the Foundation for Enterprise-Wide Portfolio Visibility"</div>
+        <div class="c26-session-speaker">Kathy Vega — Global Payments</div>
+        <div class="c26-session-why">
+          Global Payments rebuilt their demand, governance, and capacity model on Planview after an initial transformation — evolving from basic portfolio tracking to enterprise-wide visibility that supports leadership decisions. A strong benchmark for where SCIF's ICP foundation work is heading, and a practical peer story on how to make capacity data defensible at the SVP level.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">ICP</span>
+          <span class="c26-tag">Demand Planning</span>
+          <span class="c26-tag">Customer Story</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">2:00<br>–<br>2:30 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Work Delivery · Customer Story · Portfolios</div>
+        <div class="c26-session-title">"From Intake to Execution: Building an End-to-End Project Delivery Model"</div>
+        <div class="c26-session-speaker">Michael Malone &amp; Martin Monteiro — Vanderbilt University Medical Center</div>
+        <div class="c26-session-why">
+          Vanderbilt Health replaced spreadsheets and SharePoint with a simplified, end-to-end delivery model in Portfolios — covering intake through execution and governance. <strong>This mirrors SCIF's tool-sprawl challenge</strong> (SharePoint, MS Project, Confluence, Jira, Excel, PowerPoint) and the goal of driving portfolio-level program ROI tracking for the $300M Operations Redesign. Directly relevant to the ICP intake and prioritization framework build.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Intake</span>
+          <span class="c26-tag">Portfolios</span>
+          <span class="c26-tag">Governance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">2:50<br>–<br>3:35 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Planning · Best Practice · Anvi</div>
+        <div class="c26-session-title">"The Underappreciated Art of Scenario Planning"</div>
+        <div class="c26-session-speaker">Erik Peterson &amp; Marcus Klein — Planview + Customer</div>
+        <div class="c26-session-why">
+          Covers AI-powered scenario modeling using <strong>Portfolios and Anvi together</strong> — the exact combination Kacy demoed in March (Anvi for ICP data readiness, translated into actionable work in AgilePlace). See how organizations use Anvi to test "what-if" funding and capacity options when priorities compete. Relevant to SCIF's SB 446 compliance and ORSA submission governance requirements, where portfolio decisions need to be audit-ready and defensible.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Anvi AI</span>
+          <span class="c26-tag">Scenario Planning</span>
+          <span class="c26-tag">Enterprise Roadmaps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-subheading">Product Roadmap Sessions — 3:50–5:00 PM · Recommend splitting across sessions</div>
+
+    <div class="c26-split-note">
+      <div class="c26-split-person">
+        <strong>Satt Bains</strong>
+        <span>Roadmap: Planview Anvi</span> (3:50–4:20 PM)<br>
+        VP-level conversation on AI roadmap and Anvi's path for SCIF
+      </div>
+      <div class="c26-split-person">
+        <strong>Randi Shepard</strong>
+        <span>Roadmap: Planview Portfolios</span> (3:50–4:20 PM)<br>
+        Enterprise Roadmaps, ICP, and RPM enablement direction
+      </div>
+      <div class="c26-split-person">
+        <strong>Kathleen Radic</strong>
+        <span>Roadmap: Hub &amp; Integrations</span> (3:50–4:20 PM)<br>
+        ADO/Jira integration roadmap — plan the resumption timeline
+      </div>
+    </div>
+
+    <div class="c26-roadmap-strip">
+      <div class="c26-roadmap-card must">
+        <div class="c26-roadmap-icon">🤖</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Roadmap: Planview Anvi</div>
+          <div class="c26-roadmap-speaker">Dave Kurak · 3:50–4:20 PM</div>
+          <div class="c26-roadmap-note">Anvi is now available for SCIF testing. Ask Dave about the ICP readiness use case, data thresholds, and what deployment looks like for an account at SCIF's scale.</div>
+          <span class="c26-roadmap-badge c26-badge-must">★★★ Must Attend</span>
+        </div>
+      </div>
+      <div class="c26-roadmap-card must">
+        <div class="c26-roadmap-icon">🗺️</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Roadmap: Planview Portfolios</div>
+          <div class="c26-roadmap-speaker">Paul Jacobs · 3:50–4:20 PM</div>
+          <div class="c26-roadmap-note">Covers Enterprise Roadmaps, intake prioritization, and ICP capabilities. Ask Paul about the roadmap for the RPM enablement and how Portfolios + Anvi connect for scenario planning.</div>
+          <span class="c26-roadmap-badge c26-badge-must">★★★ Must Attend</span>
+        </div>
+      </div>
+      <div class="c26-roadmap-card must">
+        <div class="c26-roadmap-icon">🔗</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Roadmap: Planview Hub &amp; Integrations</div>
+          <div class="c26-roadmap-speaker">Josh Garrett · 3:50–4:20 PM</div>
+          <div class="c26-roadmap-note">SCIF's ADO/ProjectPlace integration is paused pending new CIO direction. Use this session to understand what the integration will look like and plan the 6-month resumption timeline.</div>
+          <span class="c26-roadmap-badge c26-badge-must">★★★ Must Attend</span>
+        </div>
+      </div>
+      <div class="c26-roadmap-card">
+        <div class="c26-roadmap-icon">📊</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Roadmap: Planview.Me &amp; Admin</div>
+          <div class="c26-roadmap-speaker">Paul Jacobs &amp; Yessica Archilla · 4:30–5:00 PM</div>
+          <div class="c26-roadmap-note">Follow-on to Kathleen's Sunday Planview.Me workshop. Confirm the rollout approach and timeline with Yessica directly — Planview.Me rollout is a top-5 priority from the April 27 sync.</div>
+          <span class="c26-roadmap-badge c26-badge-rec">★★ Recommended</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-alert-banner">
+      <strong>Adoption / Progressing Engine — Open Office Hours 3:50–5:00 PM:</strong> SCIF's team is experiencing adoption friction with the Progression Engine (April 8 email thread with Stephanie Wallace and Dan McLaughlin). Use the Services Theater Open Office Hours to get a live walk-through of the "Progression Parties" approach and baseline strategies with a Planview Evolve SME.
+    </div>
+
+    <div class="c26-subheading">Monday Evening</div>
+    <div class="c26-evening-strip">
+      <div class="c26-evening-card">
+        <div class="c26-evening-time">4:30–6:00 PM</div>
+        <div class="c26-evening-title">Connect Expo Happy Hour</div>
+        <div class="c26-evening-desc">Follow up with Dave Kurak (Anvi) and Josh Garrett (Hub) after their roadmap sessions. Good informal time to ask the questions you didn't get to raise from the floor.</div>
+      </div>
+      <div class="c26-evening-card">
+        <div class="c26-evening-time">7:00–10:00 PM</div>
+        <div class="c26-evening-title">Customer Party</div>
+        <div class="c26-evening-desc">Anthony Cessario will be present — ideal setting for the full SCIF team to connect with him and with Planview leadership in a relaxed environment. Kacy will facilitate introductions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TUESDAY -->
+  <div class="c26-day-block">
+    <div class="c26-day-label">
+      <div class="c26-day-number">03</div>
+      <div class="c26-day-info">
+        <div class="c26-day-name">Tuesday, May 5</div>
+        <div class="c26-day-date">Deep Dive Day</div>
+        <div class="c26-day-theme c26-theme-tuesday">Follow-Up &amp; Close Out</div>
+      </div>
+      <div class="c26-day-rule"></div>
+    </div>
+
+    <div class="c26-session-card">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">8:30<br>–<br>9:50 AM</div>
+        <div class="c26-track-pip" style="background:#888"></div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Keynote · Day 2</div>
+        <div class="c26-session-title">Welcome to Day 2</div>
+        <div class="c26-session-speaker">Matt Zilli, CEO — Planview</div>
+        <div class="c26-session-why">
+          Day-2 strategic framing and any major product announcements. Strong content for the internal debrief Satt will run with Alvin Cheung and Alicia Wong after the conference.
+        </div>
+        <div class="c26-session-tags"><span class="c26-tag">Keynote</span><span class="c26-tag">All Team</span></div>
+      </div>
+    </div>
+
+    <div class="c26-subheading">Tuesday 10:10 AM — Choose One</div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">10:10<br>–<br>10:40 AM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Work Delivery · Customer Story · Portfolios</div>
+        <div class="c26-session-title">"Building a Unified Delivery Model: Standardizing Agile, Waterfall, and Hybrid Execution with Executive Visibility"</div>
+        <div class="c26-session-speaker">Sheri Millar — Sherwin Williams</div>
+        <div class="c26-session-why">
+          Sherwin Williams standardized governance across 1,000+ initiatives using Portfolios — enabling agile, waterfall, and hybrid delivery teams while giving executives a single, trusted view. <strong>SCIF's Operations Redesign and portal modernization programs span mixed delivery methods</strong>, and Alvin Cheung/Alicia Wong need exactly this kind of exec-level accountability layer. The governance model here is the target state.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Portfolios</span>
+          <span class="c26-tag">Exec Visibility</span>
+          <span class="c26-tag">Governance</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-alt-note">
+      <span class="c26-alt-label">Strong Alternate — same time slot</span>
+      <strong>"The Future of AI in Planning and Delivery"</strong> — Richard Sonnenblick, Lee Rehwinkel &amp; Eric Chang, Planview. Planview's Chief Data Scientist presents the AI roadmap and how Anvi helps organizations stay ahead of the curve. Attend this if Satt's goal is building the internal AI/Anvi narrative for the CISO (Ajay Wadhwa) and the IT security whitelisting conversation.
+    </div>
+
+    <div class="c26-subheading">Tuesday 11:00 AM — Choose One</div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">11:00<br>–<br>11:30 AM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Planning · Customer Story · Portfolios</div>
+        <div class="c26-session-title">"The United States of Highmark: Aligning Enterprise Planning Across a Company of Companies"</div>
+        <div class="c26-session-speaker">Piper Kotwica — Highmark</div>
+        <div class="c26-session-why">
+          Highmark aligned planning across diverse business entities by balancing top-down and bottom-up approaches — standardizing processes while managing complexity and improving enterprise visibility. A <strong>strong analog for SCIF's distributed PMO</strong> (EPMO governing technology, operations redesign, and claims innovation programs simultaneously). Peer-level benchmark for the portfolio governance maturity model SCIF is building.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Enterprise Planning</span>
+          <span class="c26-tag">Portfolios</span>
+          <span class="c26-tag">Customer Story</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-alt-note">
+      <span class="c26-alt-label">Strong Alternate — same time slot</span>
+      <strong>"From Reactive to Proactive: Improving Delivery with Connected Work and Dependency Visibility"</strong> — Michael O'Grady, Silicon Labs. Shows how connecting Jira with Planview via Hub enables real-time delivery visibility. Attend this if Kathleen's goal is planning the ADO/Jira integration resumption and understanding the Hub connector approach.
+    </div>
+
+    <div class="c26-subheading">Tuesday 11:50 AM — Choose One</div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">11:50 AM<br>–<br>12:20 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Planning · Best Practice · Resource Management</div>
+        <div class="c26-session-title">"The Real Cost of Saying Yes: Resource Management Lessons in Practice"</div>
+        <div class="c26-session-speaker">Melissa Brett — Planview</div>
+        <div class="c26-session-why">
+          How organizations use Planview Portfolios to avoid overcommitment and make realistic, capacity-based delivery decisions. <strong>Directly relevant to SCIF's RPM enablement work</strong> and the challenge of managing competing resource demands across the Operations Redesign, portal modernization, and claims innovation programs. Strong framing for the internal business case to Alvin Cheung on why ICP investment matters.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">Resource Management</span>
+          <span class="c26-tag">ICP</span>
+          <span class="c26-tag">Portfolios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-alt-note">
+      <span class="c26-alt-label">Strong Alternate — same time slot</span>
+      <strong>"The Project Manager Experience: Using AI to Streamline Work from Intake to Delivery"</strong> — Customer Panel + Gareth Bradley, Planview. Multi-customer view of how Anvi AI simplifies the PM experience from intake through execution. Highly practical if Randi's goal is understanding how Anvi reduces admin overhead for project managers in environments like SCIF's.
+    </div>
+
+    <div class="c26-session-card">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">1:15<br>–<br>2:00 PM</div>
+        <div class="c26-track-pip" style="background:#888"></div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Main Stage · Closing</div>
+        <div class="c26-session-title">Closing Keynote &amp; Announcements</div>
+        <div class="c26-session-speaker">Planview Leadership</div>
+        <div class="c26-session-why">
+          Closing strategy and product announcements. Capture key takeaways for the internal readout Satt will deliver to Alvin Cheung and Alicia Wong.
+        </div>
+        <div class="c26-session-tags"><span class="c26-tag">Closing</span><span class="c26-tag">All Team</span></div>
+      </div>
+    </div>
+
+    <div class="c26-session-card priority">
+      <div class="c26-session-time-col">
+        <div class="c26-session-time">2:10<br>–<br>2:55 PM</div>
+        <div class="c26-priority-star">★</div>
+      </div>
+      <div class="c26-session-body">
+        <div class="c26-session-track">Peer Discussion Forums</div>
+        <div class="c26-session-title">Customer-Led Roundtable — Investment &amp; Capacity Planning Table</div>
+        <div class="c26-session-speaker">Customer-led · Choose your table topic</div>
+        <div class="c26-session-why">
+          <strong>High-value unstructured time.</strong> Select the <strong>Investment &amp; Capacity Planning</strong> or <strong>Portfolios governance</strong> table. SCIF's ICP foundation work is at the same stage as many other organizations in this room — the peer conversations here often surface the most practical implementation insight and change management approaches that formal sessions don't cover.
+        </div>
+        <div class="c26-session-tags">
+          <span class="c26-tag red">Priority</span>
+          <span class="c26-tag">ICP</span>
+          <span class="c26-tag">Peer Networking</span>
+          <span class="c26-tag">Portfolios</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="c26-subheading">Tuesday Roadmap Follow-Up &amp; Office Hours — 3:10–4:30 PM</div>
+
+    <div class="c26-roadmap-strip">
+      <div class="c26-roadmap-card must">
+        <div class="c26-roadmap-icon">🤖</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Roadmap: Planview Anvi (2nd session)</div>
+          <div class="c26-roadmap-speaker">Dave Kurak · 3:10–3:40 PM</div>
+          <div class="c26-roadmap-note">Second opportunity with Dave — follow up on the IT whitelisting path, deployment timeline, and the ICP readiness use case framing for Ajay Wadhwa (CISO).</div>
+          <span class="c26-roadmap-badge c26-badge-must">Anvi Activation Path</span>
+        </div>
+      </div>
+      <div class="c26-roadmap-card">
+        <div class="c26-roadmap-icon">⚙️</div>
+        <div class="c26-roadmap-info">
+          <div class="c26-roadmap-title">Connect Expo + Services Theater + Open Office Hours</div>
+          <div class="c26-roadmap-speaker">Planview SMEs · 3:10–4:30 PM</div>
+          <div class="c26-roadmap-note">Use this time to work through the Progression Engine adoption questions and Portfolio-to-ProjectPlace assignee sync issue (identified in April 27 sync as not currently functioning).</div>
+          <span class="c26-roadmap-badge c26-badge-rec">Close Out Open Items</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PEOPLE TO MEET -->
+  <div class="c26-day-block">
+    <div class="c26-day-label">
+      <div class="c26-day-number" style="font-size:48px;line-height:1.3">PVW</div>
+      <div class="c26-day-info">
+        <div class="c26-day-name">Recommended People to Meet</div>
+        <div class="c26-day-date">Planview Team · Priority Introductions for SCIF</div>
+      </div>
+      <div class="c26-day-rule"></div>
+    </div>
+
+    <div class="c26-people-grid">
+      <div class="c26-person-card priority-person">
+        <div class="c26-person-name">Anthony Cessario</div>
+        <div class="c26-person-title">VP of Sales, Americas – West · Planview</div>
+        <div class="c26-person-why"><strong>Already introduced and excited to meet the team.</strong> Anthony is looped in on SCIF's priorities and has personally confirmed he'll be at Connect. The right executive conversation for Satt — covering SCIF's expansion direction, ICP journey, and Anvi activation. Customer Party Monday evening is the ideal setting.</div>
+      </div>
+      <div class="c26-person-card priority-person">
+        <div class="c26-person-name">Dave Kurak</div>
+        <div class="c26-person-title">Product Manager — Planview Anvi</div>
+        <div class="c26-person-why"><strong>Critical for Anvi activation.</strong> Anvi is now available for SCIF testing with sufficient production data. Dave owns the roadmap and the ICP data readiness use case Kacy demoed in March. Ask about deployment requirements, the IT whitelisting path with Ajay Wadhwa, and what comes after the initial activation.</div>
+      </div>
+      <div class="c26-person-card priority-person">
+        <div class="c26-person-name">Paul Jacobs</div>
+        <div class="c26-person-title">Product Manager — Portfolios &amp; Planview.Me</div>
+        <div class="c26-person-why"><strong>Core for Enterprise Roadmaps &amp; ICP.</strong> Paul owns the Portfolios roadmap including Enterprise Roadmaps, intake/prioritization capabilities, and ICP features. Kacy has specifically recommended Paul for SCIF's intake, prioritization, and data-driven portfolio governance work.</div>
+      </div>
+      <div class="c26-person-card priority-person">
+        <div class="c26-person-name">Kacy Trumbo</div>
+        <div class="c26-person-title">Sr. Customer Success Manager — Planview</div>
+        <div class="c26-person-why"><strong>Primary on-site Planview contact.</strong> Kacy will coordinate all introductions, schedule 1:1 time with product leaders, and navigate the conference on SCIF's behalf. All meeting coordination flows through Kacy. She has already sent a tailored agenda and suggested leadership introductions.</div>
+      </div>
+      <div class="c26-person-card">
+        <div class="c26-person-name">Josh Garrett</div>
+        <div class="c26-person-title">Product Manager — Hub &amp; Integrations</div>
+        <div class="c26-person-why">Owns the Hub and integrations roadmap. SCIF's ADO/ProjectPlace integration is paused pending new CIO direction. Use this introduction to understand the roadmap for that integration, timeline for resumption, and what templates and patterns are available for the ADO connector.</div>
+      </div>
+      <div class="c26-person-card">
+        <div class="c26-person-name">Yessica Archilla</div>
+        <div class="c26-person-title">Product Manager — Planview.Me &amp; Admin</div>
+        <div class="c26-person-why">Planview.Me rollout is a top-five priority from the April 27 sync. Kathleen is attending the Sunday workshop — this is the follow-on conversation to confirm the deployment model and roadmap for Planview.Me at SCIF. Coordinate with Kacy for a brief 1:1 or catch Yessica at her roadmap session.</div>
+      </div>
+      <div class="c26-person-card">
+        <div class="c26-person-name">Sandrina Branton</div>
+        <div class="c26-person-title">Planview — Implementation &amp; Business Transformation</div>
+        <div class="c26-person-why">Kacy recommended Sandrina for implementation and change management conversations for enterprise PMOs. Relevant for SCIF's Progression Engine adoption challenges and the ICP foundation rollout — the change management dimension of getting resource managers to engage with capacity data.</div>
+      </div>
+      <div class="c26-person-card">
+        <div class="c26-person-name">Melissa Brett</div>
+        <div class="c26-person-title">Planview — Resource Management Expert</div>
+        <div class="c26-person-why">Presenting Tuesday's "Real Cost of Saying Yes" session on capacity-based delivery decisions. A natural follow-on conversation after her session — directly supports SCIF's RPM enablement work and the business case framing for Alvin Cheung on why avoiding overcommitment requires proper ICP tooling.</div>
+      </div>
+      <div class="c26-person-card">
+        <div class="c26-person-name">Erik Peterson</div>
+        <div class="c26-person-title">Planview — Scenario Planning &amp; Portfolios Strategy</div>
+        <div class="c26-person-why">Co-presenting Monday's Scenario Planning session with Portfolios + Anvi. A useful conversation for Satt on how the scenario modeling use case maps to SCIF's five competing program priorities and the board-level defensibility requirement for the $300M Operations Redesign ROI.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="c26-footer">
+  Prepared for State Compensation Insurance Fund · Satt Bains · Randi Shepard · Kathleen Radic · <span>Planview</span> Connect 2026 · May 3–5, Florida · Confidential
+</div>
+
+</div>
+
+</div><!-- end main -->
+
+<script>
+async function refreshFeed() {
+  const btn = document.getElementById('refresh-btn');
+  const icon = document.getElementById('refresh-icon');
+  const status = document.getElementById('feed-status');
+  const container = document.getElementById('feed-container');
+
+  // Spin the icon
+  icon.style.transition = 'transform 1s linear';
+  let spinning = true;
+  let deg = 0;
+  const spin = setInterval(() => {
+    deg += 20;
+    icon.style.transform = `rotate(${deg}deg)`;
+  }, 50);
+
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  status.textContent = 'Fetching latest news on State Compensation Insurance Fund...';
+
+  try {
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+        system: `You are a sales intelligence assistant. Today is ${today}. Search the web for the latest news about State Compensation Insurance Fund (SCIF / State Fund California / statefundca.com). Focus on: leadership changes, technology initiatives, regulatory news, operational announcements, and anything relevant to enterprise software or PMO/portfolio management. Return ONLY a JSON array of 3-5 news items. Each item must have: source (string), date (string), title (string), body (string, 2-3 sentences), trigger (string, 1 sentence outreach tip). No markdown, no preamble, just the raw JSON array.`,
+        messages: [{ role: 'user', content: 'Search for the latest news about State Compensation Insurance Fund California and return results as a JSON array.' }]
+      })
+    });
+
+    const data = await response.json();
+
+    // Extract text from response
+    let rawText = '';
+    for (const block of (data.content || [])) {
+      if (block.type === 'text') rawText += block.text;
+    }
+
+    // Parse JSON
+    const jsonMatch = rawText.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) throw new Error('No JSON array found in response');
+    const items = JSON.parse(jsonMatch[0]);
+
+    // Render new items
+    clearInterval(spin);
+    icon.style.transition = 'transform 0.3s';
+    icon.style.transform = 'rotate(0deg)';
+
+    // Keep static CRM items at top, replace web-fetched items
+    const staticItems = Array.from(container.querySelectorAll('.feed-item[data-static]'));
+    // Remove previously fetched items
+    container.querySelectorAll('.feed-item:not([data-static])').forEach(el => el.remove());
+
+    // Prepend fresh items
+    const fragment = document.createDocumentFragment();
+    for (const item of items) {
+      const div = document.createElement('div');
+      div.className = 'feed-item';
+      div.style.borderLeft = '3px solid var(--teal)';
+      div.innerHTML = `
+        <div class="feed-source" style="display:flex;align-items:center;gap:8px;">
+          <span style="background:var(--teal);color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;font-family:'IBM Plex Mono',monospace;">NEW</span>
+          ${item.source || 'Web Search'} · ${item.date || today}
+        </div>
+        <div class="feed-title">${item.title || ''}</div>
+        <div class="feed-body">${item.body || ''}</div>
+        <div class="feed-trigger">${item.trigger || ''}</div>
+      `;
+      fragment.appendChild(div);
+    }
+    container.insertBefore(fragment, container.firstChild);
+
+    const now = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    status.textContent = `Feed refreshed at ${now} — ${items.length} new articles found. Scroll down for standing CRM signals.`;
+
+  } catch (err) {
+    clearInterval(spin);
+    icon.style.transform = 'rotate(0deg)';
+    status.textContent = 'Refresh failed — check your connection and try again. (' + err.message + ')';
+  }
+
+  btn.disabled = false;
+  btn.style.opacity = '1';
+}
+
+function showSection(name, tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  tab.classList.add('active');
+}
+
+function toggleOutreach(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.outreach-arrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  arrow.classList.toggle('open', !isOpen);
+}
+
+function switchTab(btn, type) {
+  const body = btn.closest('.outreach-body');
+  body.querySelectorAll('.outreach-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  body.querySelectorAll('.email-pane, .talk-pane').forEach(p => p.classList.remove('active'));
+  if (type === 'email') {
+    body.querySelector('.email-pane').classList.add('active');
+  } else {
+    body.querySelector('.talk-pane').classList.add('active');
+  }
+}
+</script>
+</body>
+</html>
